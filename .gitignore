@@ -1,0 +1,4 @@
+# 🔹 Ignorar configuraciones de editores de código
+.idea/
+.vscode/
+.DS_Store
