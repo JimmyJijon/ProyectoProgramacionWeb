@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//ESTOS METODOS NOS PERMITEN HACER LAS PETICIONES GET, POST, PUT, DELETE, DEBERAN SER LLAMADOS DESDE UN COMPONENTE
 const ESTUDIANTE_BASE_REST_API_URL = "http://localhost:8080/api/v1/estudiantes";
 
 class EstudianteService{

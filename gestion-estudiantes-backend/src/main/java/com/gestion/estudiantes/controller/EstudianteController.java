@@ -20,6 +20,7 @@ import com.gestion.estudiantes.exception.ResourceNotFoundException;
 import com.gestion.estudiantes.model.Estudiante;
 import com.gestion.estudiantes.repository.EstudianteRepository;
 
+//AQUI ESTA EL API REST QUE PERMITIRA USAR LOS CRUD DE ESTUDIANTE HACIENDO PETICIONES DESDE EL FRONT REACT
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 @RequestMapping("/api/v1")
@@ -54,7 +55,8 @@ public class EstudianteController {
 
         estudiante.setNombre(estudianteRequest.getNombre());
         estudiante.setApellido(estudianteRequest.getApellido());
-        estudiante.setEmail(estudianteRequest.getEmail());
+        estudiante.setEmail_institucional(estudianteRequest.getEmail_institucional());
+        estudiante.setEmail_personal(estudianteRequest.getEmail_personal());
         estudiante.setCedula(estudianteRequest.getCedula());
         estudiante.setFechaNacimiento(estudianteRequest.getFechaNacimiento());
         estudiante.setEdad(estudianteRequest.getEdad());
@@ -73,8 +75,8 @@ public class EstudianteController {
       Estudiante estudiante = estudianteRepository.findById(id)
                  .orElseThrow(() -> new ResourceNotFoundException("El estudiante con ese ID no existe : " + id));
 
-      estudiante.setActivo(false); // 🔹 En lugar de eliminar, lo desactivamos
-      estudianteRepository.save(estudiante); // 🔹 Guardamos el cambio en la base de datos
+      estudiante.setActivo(false); // En lugar de eliminar, lo desactivamos
+      estudianteRepository.save(estudiante); //  Guardamos el cambio en la base de datos
       Map<String,Boolean> response = new HashMap();
       response.put("deleted",Boolean.TRUE);
       return ResponseEntity.ok(response);
