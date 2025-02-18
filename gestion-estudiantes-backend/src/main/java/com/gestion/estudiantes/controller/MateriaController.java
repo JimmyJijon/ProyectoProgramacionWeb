@@ -20,8 +20,7 @@ import com.gestion.estudiantes.exception.ResourceNotFoundException;
 import com.gestion.estudiantes.model.Materia;
 import com.gestion.estudiantes.repository.MateriaRepository;
 
-import jakarta.persistence.criteria.Predicate.BooleanOperator;
-
+//AQUI ESTA EL API REST QUE PERMITIRA USAR LOS CRUD DE MATERIA HACIENDO PETICIONES DESDE EL FRONT REACT
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 @RequestMapping("/api/v1")

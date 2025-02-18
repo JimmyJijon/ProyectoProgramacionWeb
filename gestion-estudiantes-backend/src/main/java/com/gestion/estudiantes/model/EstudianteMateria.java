@@ -23,12 +23,12 @@ public class EstudianteMateria {
   
   @ManyToOne
   @JoinColumn(name="estudiante_id", nullable = false)
-  @JsonBackReference // 🔹 Evita la serialización en sentido inverso y rompe el bucle
+  @JsonBackReference(value = "estudiante-materias") // 🔹 Evita la recursión infinita al serializar
   private Estudiante estudiante;
 
   @ManyToOne
   @JoinColumn(name="materia_id", nullable = false)
-  @JsonBackReference // 🔹 Evita bucles al serializar desde Materia
+  @JsonBackReference(value = "materia-estudiantes") // 🔹 Evita recursión infinita en Materia
   private Materia materia;
 
   @Column(name="fecha_inscripcion")

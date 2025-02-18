@@ -3,7 +3,9 @@ package com.gestion.estudiantes.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -11,6 +13,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -21,7 +25,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name="Estudiante")
+@Table(name="estudiante")
 public class Estudiante {
   //ESTA ES LA TABLA ESTUDIANTE QUE APARECE EN POSTGRES
   @Id
@@ -34,8 +38,11 @@ public class Estudiante {
   @Column(name="apellido")
   private String apellido;
 
-  @Column(name = "email")
-  private String email;
+  @Column(name = "email_institucional")
+  private String email_institucional;
+
+  @Column(name = "email_personal")
+  private String email_personal;
 
   @Column(name = "Cedula")
   private String cedula;
@@ -61,6 +68,13 @@ public class Estudiante {
 
   @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL)
   @JsonManagedReference // 🔹 Indica que esta es la parte "principal" de la relación
+  @JsonProperty(access = JsonProperty.Access.READ_ONLY)
   private List<EstudianteMateria> materias;
-
+  
+  /* @ManyToOne indica que un estudiante solo puede estar en una carrera.
+  //@JoinColumn(name = "carrera_id") crea la clave foránea en la base de datos.*/
+  @ManyToOne
+  @JoinColumn(name = "carrera_id", nullable = false)
+  private Carrera carrera;
+  
 }

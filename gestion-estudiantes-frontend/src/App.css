@@ -76,7 +76,7 @@ html, body {
 
 .EstContainer {
   background-color: rgb(236, 241, 239);
-  height: 550px;
+  height: 700px;
   width: 400px;
   position: fixed; /* Lo fija completamente a la izquierda */
   left: 50px; /*Sirve para definir que tan cerca de la parte izquierda estara*/
@@ -89,7 +89,63 @@ html, body {
 
 .FotoDelEst{
   margin-top: 30px;
-  height: 40%;
-  width: 89%;
-  background-color: red;
+  width: 270px;
+  height: 270px;
+  background-color: white;
+  display: flex; /* Establece el contenedor como un contenedor flexible */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+}
+
+.imgEst{
+  width: 270px;
+  height: 270px;
+}
+
+.datosDelEst {
+  background-color: #f8f9fa; /* Color de fondo */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  
+}
+
+
+
+
+
+/* Contenedor de los botones en modo grid */
+.botones-container {
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px; /* Espacio entre tarjetas */
+  margin-top: 30px; /* Espacio sobre la sección */
+  justify-items: center; /* Centra cada tarjeta dentro de su celda */
+}
+.boton-item {
+  width: 160px;
+  height: 160px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* Centra contenido horizontalmente */
+  justify-content: center; /* Centra contenido verticalmente */
+  text-align: center;
+  color: #c70000; /* Color de texto/ícono, por ejemplo */
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+
+.boton-item:hover {
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+}
+
+/* Ícono dentro del botón */
+.icono-boton {
+  width: 90px;  /* Ajusta según tu diseño */
+  height: 90px; 
+  margin-bottom: 10px;
 }
