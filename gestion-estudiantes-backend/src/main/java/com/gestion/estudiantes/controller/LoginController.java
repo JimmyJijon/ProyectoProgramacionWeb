@@ -1,0 +1,44 @@
+package com.gestion.estudiantes.controller;
+
+import com.gestion.estudiantes.model.Usuario;
+import com.gestion.estudiantes.repository.usuario.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import java.util.Map;
+import java.util.HashMap;
+
+@RestController
+@RequestMapping("/api/v2")
+@CrossOrigin(origins = "http://localhost:3000")
+public class LoginController {
+
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody Usuario usuario) {
+        try {
+            String tokenString = usuarioService.autenticar(usuario.getUsername(), usuario.getPassword());
+            Map<String, String> response = new HashMap<>();
+            response.put("token", tokenString);
+            return ResponseEntity.ok().body(response);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(401).body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody Usuario usuario) {
+        try {
+            Usuario usuarioRegistrado = usuarioService.registrar(usuario);
+            // Generar un token para el usuario recién registrado
+            String tokenString = usuarioService.autenticar(usuario.getUsername(), usuario.getPassword());
+            Map<String, String> response = new HashMap<>();
+            response.put("token", tokenString);
+            return ResponseEntity.ok().body(response);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(400).body(e.getMessage());
+        }
+    }
+}
