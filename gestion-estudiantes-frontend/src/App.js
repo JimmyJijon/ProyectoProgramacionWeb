@@ -8,6 +8,8 @@ import AddEstudianteComponent from './components/AddEstudianteComponent';
 import HomePageComponent from './components/HomePageComponent';
 import Login from './components/Login';
 import Register from './components/Register';
+import CalendarioEstudiante from './components/CalendarioEstudiante';
+
 
 // ESTE COMPONENTE ES EL PRINCIPAL DE REACT, AQUI SE MANEJAN LAS RUTAS DE LOS COMPONENTES
 //AQUI LLAMAMOS A LOS COMPONENTES PARA QUE SE MUESTREN EN PANTALLA DE FORMA ORDENADA
@@ -18,12 +20,13 @@ function App() {
         <HeaderComponent />
         <div className='container'>
           <Routes>
-          <Route exact path='/login' element={< Login />}></Route>
+          <Route path="/" element={<Login />} /> {/* Ahora el Login es la pantalla de inicio */}
+           <Route path='/register' element={<Register />}></Route>
            <Route exact path='/home' element={< HomePageComponent />}></Route>
            <Route path='/estudiantes' element={<ListEstudiantesComponent />}></Route>
            <Route path='/add-estudiante' element={<AddEstudianteComponent />}></Route>
            <Route path='/edit-estudiante/:id' element={<AddEstudianteComponent />}></Route>
-           <Route path='/register' element={<Register />}></Route> {/* Ruta para el registro */}
+           <Route path='/calendario' element={<CalendarioEstudiante />} />
           </Routes>
         </div>
         <FooterComponent />
