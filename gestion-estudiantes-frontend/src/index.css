@@ -13,8 +13,8 @@ code {
 }
 
 :root {
-  --primary-color: #D32F2F; /* Rojo oscuro */
-  --primary-color-text: #ffffff; /* Texto blanco en botones */
-  --highlight-bg: #FFCDD2; /* Fondo de resaltado */
-  --highlight-text-color: #D32F2F; /* Texto resaltado */
+  --primary-color: #D32F2F !important; /* Rojo oscuro */
+  --primary-color-text: #ffffff !important; /* Texto blanco en botones */
+  --highlight-bg: #FFCDD2 !important; /* Fondo de resaltado */
+  --highlight-text-color: #D32F2F !important; /* Texto resaltado */
 }

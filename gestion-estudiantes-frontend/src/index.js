@@ -9,12 +9,12 @@ import 'primereact/resources/themes/lara-light-amber/theme.css'; // Tema de Prim
 import 'primereact/resources/primereact.min.css'; // Estilos de componentes
 import 'primeicons/primeicons.css'; // Íconos de PrimeReact
 import 'primeflex/primeflex.css'; // Utilidades CSS como grids y flexbox
-
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <PrimeReactProvider>
+    <PrimeReactProvider value={{ cssTransition: false }}>
       <App />
     </PrimeReactProvider>
   </React.StrictMode>
