@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import ListEstudiantesComponent from './components/ListEstudiantesComponent';
 import HeaderComponent from './components/HeaderComponent';
@@ -8,9 +7,13 @@ import AddEstudianteComponent from './components/AddEstudianteComponent';
 import HomePageComponent from './components/HomePageComponent';
 import Login from './components/Login';
 import Register from './components/Register';
+import VidInduccionComponent from './components/VidInduccionComponent';
+import ProtectedRoute from './components/ProtectedRoute';
+
 
 // ESTE COMPONENTE ES EL PRINCIPAL DE REACT, AQUI SE MANEJAN LAS RUTAS DE LOS COMPONENTES
 //AQUI LLAMAMOS A LOS COMPONENTES PARA QUE SE MUESTREN EN PANTALLA DE FORMA ORDENADA
+
 function App() {
   return (
     <div>
@@ -18,12 +21,50 @@ function App() {
         <HeaderComponent />
         <div className='container'>
           <Routes>
-          <Route exact path='/login' element={< Login />}></Route>
-           <Route exact path='/home' element={< HomePageComponent />}></Route>
-           <Route path='/estudiantes' element={<ListEstudiantesComponent />}></Route>
-           <Route path='/add-estudiante' element={<AddEstudianteComponent />}></Route>
-           <Route path='/edit-estudiante/:id' element={<AddEstudianteComponent />}></Route>
-           <Route path='/register' element={<Register />}></Route> {/* Ruta para el registro */}
+            <Route path="/" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+
+            {/* Rutas protegidas */}
+            <Route 
+              path="/home" 
+              element={
+                <ProtectedRoute>
+                  <HomePageComponent />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/estudiantes" 
+              element={
+                <ProtectedRoute>
+                  <ListEstudiantesComponent />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/add-estudiante" 
+              element={
+                <ProtectedRoute>
+                  <AddEstudianteComponent />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/edit-estudiante/:id" 
+              element={
+                <ProtectedRoute>
+                  <AddEstudianteComponent />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/vidinduccion" 
+              element={
+                <ProtectedRoute>
+                  <VidInduccionComponent />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </div>
         <FooterComponent />

@@ -1,7 +1,10 @@
-package com.gestion.estudiantes.repository.usuario;
+package com.gestion.estudiantes.service;
 
 import com.gestion.estudiantes.model.Usuario;
 import com.gestion.estudiantes.repository.UsuarioRepository;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,11 +30,17 @@ public class UsuarioService {
         // Busca el usuario por nombre de usuario
         Usuario usuario = usuarioRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-        // Verifica la contraseña (deberías usar hashing en un entorno real)
+
+        // Validar credenciales directamente
         if (usuario.getPassword().equals(password)) {
-            return "token_generado"; // Aquí deberías generar un token JWT
+            // Generar un "token" simple (puede ser solo el username o algo más)
+            return "token_" + username + "_" + System.currentTimeMillis();
         } else {
             throw new RuntimeException("Credenciales incorrectas");
         }
+    }
+
+    public Optional<Usuario> getUsuarioByUsername(String username) {
+        return usuarioRepository.findByUsername(username); // Busca el usuario por su nombre
     }
 }
