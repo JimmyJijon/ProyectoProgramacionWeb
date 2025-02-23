@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function HomePageComponent() {
   
   const navigate = useNavigate(); // Hook para navegar
-  // Si link empieza con "http", lo abrirá en otra pestaña,  con "/", usará navigate() para cambiar la página
+  // Si link empieza con "http", lo abrirá en otra pestaña,  con "/" usará navigate() para cambiar la página
   // Agregar componentes despues de "/"
   const botones = [
     { icono: "/actividad-extracurricular.png", texto: "Actividad extracurricular", link: "/"},

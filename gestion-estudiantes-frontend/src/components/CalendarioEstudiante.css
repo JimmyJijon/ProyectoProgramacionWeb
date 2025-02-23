@@ -1,6 +1,33 @@
-.evento-activo { /*En desarrollo*/
-    background-color: #c27e7e;
-    color: white;
-    border-radius: 50%;
-    font-weight: bold;
+
+/* Resaltado pequeño y parpadeante en eventos */
+.evento-activo {
+  position: relative;
+}
+
+.evento-activo::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: -7px;
+  width: 7px;
+  height: 7px;
+  background-color: red;
+  border-radius: 50%;
+  animation: blink 1s infinite alternate;
+}
+
+/* Efecto de parpadeo */
+@keyframes blink {
+  from {
+    opacity: 1;
   }
+  to {
+    opacity: 0.3;
+  }
+}
+
+/* Asegura que los nombres de los días estén bien alineados */
+.p-datepicker-calendar thead th {
+  text-align: center !important;
+  padding: 5px 0;
+}
