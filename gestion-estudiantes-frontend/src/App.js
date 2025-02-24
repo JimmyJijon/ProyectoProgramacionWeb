@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import VidInduccionComponent from './components/VidInduccionComponent';
 import ProtectedRoute from './components/ProtectedRoute';
+import CalendarioEstudiante from './components/CalendarioEstudiante';
 
 
 // ESTE COMPONENTE ES EL PRINCIPAL DE REACT, AQUI SE MANEJAN LAS RUTAS DE LOS COMPONENTES
@@ -62,6 +63,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <VidInduccionComponent />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/calendario" 
+              element={
+                <ProtectedRoute>
+                  <CalendarioEstudiante />
                 </ProtectedRoute>
               } 
             />

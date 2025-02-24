@@ -10,7 +10,7 @@ function HomePageComponent() {
     { icono: "/aulavirtual.png", texto: "Aula virtual", link: "https://tesonline.academicok.com/login/index.php" },
     { icono: "/bolsalaboral.png", texto: "Bolsa laboral" },
     { icono: "/botondepagos.png", texto: "Botón de pagos" },
-    { icono: "/calendario.png", texto: "Calendario de actividades de la institución" },
+    { icono: "/calendario.png", texto: "Calendario de actividades de la institución", link: "/calendario" },
     { icono: "/evaluaciondemisprofesores.png", texto: "Evaluación del alumno a sus docentes" },
     { icono: "/facturas.png", texto: "Facturas emitidas" },
     { icono: "/fichasocioeconomica.png", texto: "Ficha socioeconómica" },
