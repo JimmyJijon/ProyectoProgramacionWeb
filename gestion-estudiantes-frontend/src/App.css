@@ -250,3 +250,11 @@ button[type="submit"]:hover {
 .register-link a:hover {
   color: #ff4d4d;
 }
+
+.CronogramaComponent{
+  margin-top: 90px;
+}
+
+.buttonHorario{
+  margin-bottom: 20px;
+}
