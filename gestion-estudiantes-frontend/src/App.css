@@ -251,7 +251,6 @@ button[type="submit"]:hover {
   color: #ff4d4d;
 }
 
-<<<<<<< HEAD
 .CronogramaComponent{
   margin-top: 90px;
 }
@@ -259,7 +258,6 @@ button[type="submit"]:hover {
 .buttonHorario{
   margin-bottom: 20px;
 }
-=======
 /* Css página de los videos */
 .video-page-wrapper {
   display: flex;
@@ -302,4 +300,3 @@ button[type="submit"]:hover {
   display: flex;
   justify-content: center;
 }
->>>>>>> b1097ae0e8227c8b526c362e2c750fec20ffe1a3

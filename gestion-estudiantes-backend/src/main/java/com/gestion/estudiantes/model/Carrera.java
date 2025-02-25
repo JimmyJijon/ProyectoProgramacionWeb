@@ -29,4 +29,9 @@ public class Carrera {
     @JsonIgnoreProperties("carrera") // 🔹 Evita la recursión infinita
     @JsonIgnore
     private List<Estudiante> estudiantes;
+
+
+    @OneToOne(mappedBy = "carrera", cascade = CascadeType.ALL, orphanRemoval = true)
+    private MallaCurricular mallaCurricular;
+    
 }
