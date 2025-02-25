@@ -5,6 +5,10 @@
   "dependencies": {
     "axios": "^1.7.9",
     "cra-template": "1.2.0",
+<<<<<<< HEAD
+=======
+    "primeflex": "^4.0.0",
+>>>>>>> b1097ae0e8227c8b526c362e2c750fec20ffe1a3
     "primeicons": "^7.0.0",
     "primereact": "^10.9.2",
     "react": "^18.3.1",

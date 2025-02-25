@@ -77,7 +77,7 @@ public class EstudianteController {
 
       estudiante.setActivo(false); // En lugar de eliminar, lo desactivamos
       estudianteRepository.save(estudiante); //  Guardamos el cambio en la base de datos
-      Map<String,Boolean> response = new HashMap();
+      Map<String,Boolean> response = new HashMap<>();
       response.put("deleted",Boolean.TRUE);
       return ResponseEntity.ok(response);
     }
