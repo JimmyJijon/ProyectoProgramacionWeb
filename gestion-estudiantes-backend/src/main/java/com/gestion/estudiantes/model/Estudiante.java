@@ -38,7 +38,7 @@ public class Estudiante {
   private String apellido;
 
   @Column(name = "email_institucional")
-  private String email_institucional;
+  private String emailInstitucional;
 
   @Column(name = "email_personal")
   private String email_personal;

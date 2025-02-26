@@ -46,14 +46,14 @@ private Profesor profesor;
 @OneToMany(mappedBy = "materia")
 private List<Horario> horarios;
 
-private int creditos; // Nuevo campo
-
+@Column(name = "creditos")
+private int creditos; //Valor por defecto
 
 @ManyToOne
 @JoinColumn(name = "malla_curricular_id")
 private MallaCurricular mallaCurricular;
 
 @OneToMany(mappedBy = "materia", cascade = CascadeType.ALL)
-@JsonManagedReference // 🔹 Indica que es la parte principal de la relación
+@JsonManagedReference //Indica que es la parte principal de la relación
 private List <EstudianteMateria> estudiantes; 
 }

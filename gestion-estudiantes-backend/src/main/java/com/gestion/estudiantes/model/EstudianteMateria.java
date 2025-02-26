@@ -46,4 +46,5 @@ public class EstudianteMateria {
   @Column
   private String periodoAcademico; // Ejemplo: "2024-1"
   
+  
 }
