@@ -3,6 +3,8 @@ package com.gestion.estudiantes.model;
 import jakarta.persistence.*;
 import java.util.Objects;
 
+import com.gestion.estudiantes.model.enums.Role;
+
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -19,6 +21,21 @@ public class Usuario {
 
     @Column(unique = true, nullable = false)
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    private Role rol;  // Enum: ESTUDIANTE, PROFESOR, ADMIN
+
+    public Role getRol() {
+        return rol;
+    }
+
+    public void setRol(Role rol) {
+        this.rol = rol;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "estudiante_id", nullable = true) // Relación con Estudiante
+    private Estudiante estudiante;
 
     // Constructor vacío (obligatorio para JPA)
     public Usuario() {

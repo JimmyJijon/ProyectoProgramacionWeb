@@ -3,9 +3,12 @@ package com.gestion.estudiantes.model;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.gestion.estudiantes.model.enums.EstadoMateria;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -37,5 +40,10 @@ public class EstudianteMateria {
   @Column(name = "nota")
   private Double nota;
 
+  @Enumerated(EnumType.STRING)
+  private EstadoMateria estado; // Cada estudiante tendrá su propio estado
+  
+  @Column
+  private String periodoAcademico; // Ejemplo: "2024-1"
   
 }

@@ -46,6 +46,9 @@ private Profesor profesor;
 @OneToMany(mappedBy = "materia")
 private List<Horario> horarios;
 
+private int creditos; // Nuevo campo
+
+
 @ManyToOne
 @JoinColumn(name = "malla_curricular_id")
 private MallaCurricular mallaCurricular;
