@@ -32,7 +32,7 @@ public class LoginController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Usuario usuario) {
         try {
-            Usuario usuarioRegistrado = usuarioService.registrar(usuario);
+            usuarioService.registrar(usuario);
             // Generar un token para el usuario recién registrado
             String tokenString = usuarioService.autenticar(usuario.getUsername(), usuario.getPassword());
             Map<String, String> response = new HashMap<>();
