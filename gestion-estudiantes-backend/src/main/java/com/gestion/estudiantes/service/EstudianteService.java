@@ -19,23 +19,23 @@ public class EstudianteService {
         this.estudianteRepository = estudianteRepository;
     }
 
-    // 1. Listar todos los estudiantes
+    //Listar todos los estudiantes
     public List<Estudiante> listarEstudiantes() {
         return estudianteRepository.findAll();
     }
 
-    // 2. Guardar un nuevo estudiante
+    //guardar un nuevo estudiante
     public Estudiante guardarEstudiante(Estudiante estudiante) {
         return estudianteRepository.save(estudiante);
     }
 
-    // 3. Obtener estudiante por ID con manejo de error
+    //Obtener estudiante por ID con manejo de error
     public Estudiante obtenerEstudiantePorId(Long id) {
         return estudianteRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("El estudiante con ID " + id + " no existe"));
     }
 
-    // 4. Actualizar un estudiante
+    // Actualizar un estudiante
     public Estudiante actualizarEstudiante(Long id, Estudiante estudianteRequest) {
         Estudiante estudiante = obtenerEstudiantePorId(id); // Busca el estudiante o lanza error
 
@@ -53,7 +53,7 @@ public class EstudianteService {
         return estudianteRepository.save(estudiante);
     }
 
-    // 5. Desactivar estudiante (Soft Delete)
+    //Desactivar estudiante (Soft Delete)
     public Map<String, Boolean> desactivarEstudiante(Long id) {
         Estudiante estudiante = obtenerEstudiantePorId(id);
         estudiante.setActivo(false);

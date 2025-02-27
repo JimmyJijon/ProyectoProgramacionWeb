@@ -18,9 +18,11 @@ public class EstudianteMateriaService {
     }
 
     // Obtener las materias en las que está inscrito un estudiante
+    
     public List<EstudianteMateria> obtenerMateriasPorEstudiante(Long estudianteId) {
-        return estudianteMateriaRepository.findByEstudianteId(estudianteId);
+    return estudianteMateriaRepository.findByEstudianteId(estudianteId);
     }
+
 
     // Obtener los estudiantes inscritos en una materia
     public List<EstudianteMateria> obtenerEstudiantesPorMateria(Long materiaId) {

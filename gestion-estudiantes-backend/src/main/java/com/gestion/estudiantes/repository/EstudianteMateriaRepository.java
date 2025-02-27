@@ -3,13 +3,14 @@ package com.gestion.estudiantes.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.gestion.estudiantes.model.EstudianteMateria;
 import com.gestion.estudiantes.model.enums.EstadoMateria;
 
 import java.util.List;
 import java.util.Optional;
-
+@Repository
 public interface EstudianteMateriaRepository extends JpaRepository<EstudianteMateria, Long> {
 
     //  Buscar todas las materias en las que está inscrito un estudiante

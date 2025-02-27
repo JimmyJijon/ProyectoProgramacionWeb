@@ -25,6 +25,15 @@ public class AulaController {
     public AulaController(AulaService aulaService) {
         this.aulaService = aulaService;
     }
+     
+     //obtener aula por Id
+     @GetMapping("/{id}")
+     public ResponseEntity<Aula> obtenerAulaPorId(@PathVariable Long id) {
+         return aulaService.obtenerAulaPorId(id)
+                 .map(ResponseEntity::ok)
+                 .orElseGet(() -> ResponseEntity.notFound().build());
+     }
+
 
     @GetMapping("/nombre/{nombre}")
     public ResponseEntity<Optional<Aula>> obtenerPorNombre(@PathVariable String nombre) {

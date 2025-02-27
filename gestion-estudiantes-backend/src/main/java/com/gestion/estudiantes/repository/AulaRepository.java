@@ -10,16 +10,18 @@ import com.gestion.estudiantes.model.Aula;
 
 @Repository
 public interface AulaRepository extends JpaRepository<Aula, Long> {
+    //buscar un aula por id
+    Optional<Aula> findById(Long id);
 
-    // Buscar un aula por nombre
+    //buscar aula por nombre
     Optional<Aula> findByNombre(String nombre);
 
-    // Buscar aulas por edificio
+    //buscar aulas por edificio
     List<Aula> findByEdificio(String edificio);
 
-    // Eliminar un aula por nombre
+    //eliminar un aula por nombre
     void deleteByNombre(String nombre);
 
-    // Eliminar aulas por edificio
+    //eliminar aulas por edificio
     void deleteByEdificio(String edificio);
 }

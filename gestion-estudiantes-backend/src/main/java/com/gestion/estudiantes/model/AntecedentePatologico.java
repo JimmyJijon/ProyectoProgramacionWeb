@@ -1,5 +1,7 @@
 package com.gestion.estudiantes.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,5 +25,6 @@ public class AntecedentePatologico {
 
     @ManyToOne
     @JoinColumn(name = "ficha_medica_id", nullable = false)
+    @JsonIgnore
     private FichaMedica fichaMedica;
 }

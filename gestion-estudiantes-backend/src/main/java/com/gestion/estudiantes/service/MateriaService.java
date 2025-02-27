@@ -16,53 +16,53 @@ public class MateriaService {
         this.materiaRepository = materiaRepository;
     }
 
-    // Obtener todas las materias
+    //obtener todas las materias
     public List<Materia> obtenerTodas() {
         return materiaRepository.findAll();
     }
 
-    // Obtener materia por ID
+    //obtener materia por ID
     public Materia obtenerPorId(Long id) {
         return materiaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Materia con ID " + id + " no encontrada"));
     }
 
-    // Buscar materia por código
+    //buscar materia por código
     public Optional<Materia> obtenerPorCodigo(String codigo) {
         return materiaRepository.findByCodigo(codigo);
     }
 
-    // Buscar materias por nombre
+    //buscar materias por nombre
     public List<Materia> buscarPorNombre(String nombre) {
         return materiaRepository.findByNombreContainingIgnoreCase(nombre);
     }
 
-    // Obtener materias activas
+    //obtener materias activas
     public List<Materia> obtenerMateriasActivas() {
         return materiaRepository.findByActivoTrue();
     }
 
-    // Obtener materias de un profesor
+    //obtener materias de un profesor
     public List<Materia> obtenerMateriasPorProfesor(Long profesorId) {
         return materiaRepository.findByProfesorId(profesorId);
     }
 
-    // Obtener materias por malla curricular
+    //btener materias por malla curricular
     public List<Materia> obtenerMateriasPorMalla(Long mallaId) {
-        return materiaRepository.findByMallaCurricularId(mallaId);
+        return materiaRepository.findByMallaCurricular(mallaId);
     }
 
-    // Obtener materias con créditos mayores a X
+    //Obtener materias con créditos mayores a X
     public List<Materia> obtenerMateriasPorCreditos(int creditos) {
         return materiaRepository.findByCreditosGreaterThanEqual(creditos);
     }
 
-    // Guardar una nueva materia
+    //Guardar una nueva materia
     public Materia guardarMateria(Materia materia) {
         return materiaRepository.save(materia);
     }
 
-    // Actualizar materia
+    //actualizar materia
     public Materia actualizarMateria(Long id, Materia materiaRequest) {
         Materia materia = obtenerPorId(id);
 
@@ -71,12 +71,12 @@ public class MateriaService {
         materia.setActivo(materiaRequest.isActivo());
         materia.setCreditos(materiaRequest.getCreditos());
         materia.setProfesor(materiaRequest.getProfesor());
-        materia.setMallaCurricular(materiaRequest.getMallaCurricular());
+        materia.setMallasCurriculares(materiaRequest.getMallasCurriculares());
 
         return materiaRepository.save(materia);
     }
 
-    // Eliminar materia (Soft Delete)
+    //inactivar materia
     public void desactivarMateria(Long id) {
         Materia materia = obtenerPorId(id);
         materia.setActivo(false);
