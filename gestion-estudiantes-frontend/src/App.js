@@ -14,17 +14,17 @@ import "primeicons/primeicons.css";  // 🔥 Íconos de PrimeReact
 import VidInduccionComponent from './components/VidInduccionComponent';
 import ProtectedRoute from './components/ProtectedRoute';
 import CalendarioEstudiante from './components/CalendarioEstudiante';
-
+import PaginaMateriasComponent from './components/PaginaMateriasComponent'; // Nueva vista para materias
 
 // ESTE COMPONENTE ES EL PRINCIPAL DE REACT, AQUI SE MANEJAN LAS RUTAS DE LOS COMPONENTES
-//AQUI LLAMAMOS A LOS COMPONENTES PARA QUE SE MUESTREN EN PANTALLA DE FORMA ORDENADA
+// AQUI LLAMAMOS A LOS COMPONENTES PARA QUE SE MUESTREN EN PANTALLA DE FORMA ORDENADA
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <HeaderComponent />
-        <div className='container'>
+        <div className="container">
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -85,6 +85,15 @@ function App() {
                   <CronogramaComponent />
                 </ProtectedRoute>
               } 
+            />
+            {/* Nueva ruta para la vista de materias */}
+            <Route 
+              path="/materias"
+              element={
+                <ProtectedRoute>
+                  <PaginaMateriasComponent />
+                </ProtectedRoute>
+              }
             />
           </Routes>
         </div>
