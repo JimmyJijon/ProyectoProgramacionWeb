@@ -4,11 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Data
@@ -26,12 +24,12 @@ public class Carrera {
     
     
     @OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL, orphanRemoval = true) // Relación con Estudiante
-    @JsonIgnoreProperties("carrera") // 🔹 Evita la recursión infinita
-    @JsonIgnore
+    @JsonBackReference("estudiante-carrera") 
     private List<Estudiante> estudiantes;
 
-
+    
     @OneToOne(mappedBy = "carrera", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference("carrera-malla")
     private MallaCurricular mallaCurricular;
     
 }

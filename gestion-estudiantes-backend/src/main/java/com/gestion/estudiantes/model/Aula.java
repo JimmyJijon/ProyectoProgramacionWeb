@@ -11,6 +11,6 @@ public class Aula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String numero;
+    private String nombre;
     private String edificio;
 }

@@ -1,10 +1,7 @@
 package com.gestion.estudiantes.model;
-
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -27,30 +25,35 @@ import lombok.NoArgsConstructor;
 public class Materia {
 
 @Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-@Column(name="nombre")
-private String nombre;
+    @Column(name="nombre")
+    private String nombre;
 
-@Column(name="codigo",unique = true)
-private String codigo;
+    @Column(name="codigo", unique = true)
+    private String codigo;
 
-@Column(name = "estado")
-private boolean activo = true;
+    @Column(name = "estado")
+    private boolean activo = true;
 
-@ManyToOne
-@JoinColumn(name = "profesor_id")
-private Profesor profesor;
+    @ManyToOne
+    @JoinColumn(name = "profesor_id")
+    private Profesor profesor;
 
-@OneToMany(mappedBy = "materia")
-private List<Horario> horarios;
+    @OneToMany(mappedBy = "materia")
+    @JsonManagedReference("materia-horario")
+    private List<Horario> horarios;
 
-@ManyToOne
-@JoinColumn(name = "malla_curricular_id")
-private MallaCurricular mallaCurricular;
+    @Column(name = "creditos")
+    private int creditos; // Valor por defecto
 
-@OneToMany(mappedBy = "materia", cascade = CascadeType.ALL)
-@JsonManagedReference // 🔹 Indica que es la parte principal de la relación
-private List <EstudianteMateria> estudiantes; 
+   
+    @ManyToMany(mappedBy = "materias") // Relacion con MallaCurricular
+    @JsonBackReference
+    private List<MallaCurricular> mallasCurriculares;
+
+    @OneToMany(mappedBy = "materia", cascade = CascadeType.ALL)
+    @JsonManagedReference("materia-estudiante") 
+    private List<EstudianteMateria> estudianteMaterias;
 }
