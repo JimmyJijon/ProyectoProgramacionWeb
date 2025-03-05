@@ -14,7 +14,7 @@ import "primeicons/primeicons.css";  // 🔥 Íconos de PrimeReact
 import VidInduccionComponent from './components/VidInduccionComponent';
 import ProtectedRoute from './components/ProtectedRoute';
 import CalendarioEstudiante from './components/CalendarioEstudiante';
-
+import MatriculacionComponent from './components/MatriculacionComponent';
 
 // ESTE COMPONENTE ES EL PRINCIPAL DE REACT, AQUI SE MANEJAN LAS RUTAS DE LOS COMPONENTES
 //AQUI LLAMAMOS A LOS COMPONENTES PARA QUE SE MUESTREN EN PANTALLA DE FORMA ORDENADA
@@ -30,61 +30,86 @@ function App() {
             <Route path="/register" element={<Register />} />
 
             {/* Rutas protegidas */}
-            <Route 
-              path="/home" 
+            <Route
+              path="/home"
               element={
                 <ProtectedRoute>
                   <HomePageComponent />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/estudiantes" 
+            <Route
+              path="/estudiantes"
               element={
                 <ProtectedRoute>
                   <ListEstudiantesComponent />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/add-estudiante" 
+            <Route
+              path="/add-estudiante"
               element={
                 <ProtectedRoute>
                   <AddEstudianteComponent />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/edit-estudiante/:id" 
+            <Route
+              path="/edit-estudiante/:id"
               element={
                 <ProtectedRoute>
                   <AddEstudianteComponent />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/vidinduccion" 
+            <Route
+              path="/vidinduccion"
               element={
                 <ProtectedRoute>
                   <VidInduccionComponent />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/calendario" 
+            <Route
+              path="/calendario"
               element={
                 <ProtectedRoute>
                   <CalendarioEstudiante />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/cronograma" 
+            <Route
+              path="/cronograma"
               element={
                 <ProtectedRoute>
                   <CronogramaComponent />
                 </ProtectedRoute>
-              } 
+              }
+            />
+            <Route
+              path="/cronograma/:estudianteId"
+              element={
+                <ProtectedRoute>
+                  <CronogramaComponent />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/matriculacion"
+              element={
+                <ProtectedRoute>
+                  <MatriculacionComponent />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/matriculacion/:estudianteId"
+              element={
+                <ProtectedRoute>
+                  <MatriculacionComponent />
+                </ProtectedRoute>
+              }
+
             />
           </Routes>
         </div>
