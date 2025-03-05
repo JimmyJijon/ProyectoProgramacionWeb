@@ -29,7 +29,7 @@ const EstudianteCard = ({ estudianteId }) => {
       <strong>No. Identificación:</strong><br /> <span className="text-dark">{estudiante.cedula}</span>
     </p>
     <p className="text-dark" style={{ fontSize: "0.9rem" }}>
-    <strong>Correo Institucional:</strong><br /> <span className="fw-normal">{estudiante.email_institucional}</span>
+    <strong>Correo Institucional:</strong><br /> <span className="fw-normal">{estudiante.emailInstitucional}</span>
     </p>
     <p className="text-dark" style={{ fontSize: "0.9rem" }}>
       <strong>Correo Personal:</strong><br /> <span className="fw-normal">{estudiante.email_personal}</span>

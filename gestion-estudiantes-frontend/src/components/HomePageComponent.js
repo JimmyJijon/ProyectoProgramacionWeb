@@ -17,7 +17,7 @@ function HomePageComponent() {
     { icono: "hojadevida.png", texto: "Hoja de vida del estudiante" },
     { icono: "matriculaciononline.png", texto: "Matriculación online" },
     { icono: "mensajeriainterna.png", texto: "Mensajeria interna" },
-    { icono: "micronograma.png", texto: "Cronograma de mis materias y profesores" },
+    { icono: "micronograma.png", texto: "Cronograma de mis materias y profesores", link: "/cronograma"},
     { icono: "mifichamedica.png", texto: "Datos personales y familiares médicos" },
     { icono: "mimalla.png", texto: "Ver mi cumplimiento de malla" },
     { icono: "misfinanzas.png", texto: "Mis rubros y deuda" },
@@ -38,7 +38,7 @@ function HomePageComponent() {
         <div className="FotoDelEst">
           <img className="imgEst" src="/userUnknown.webp" alt="Perfil Estudiante" />
         </div>
-        <EstudianteCard estudianteId={9} />
+        <EstudianteCard estudianteId={202} />
       </div>
 
       {/* Contenedor para los botones */}

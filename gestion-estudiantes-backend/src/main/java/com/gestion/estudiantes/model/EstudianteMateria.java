@@ -3,8 +3,6 @@ package com.gestion.estudiantes.model;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.gestion.estudiantes.model.enums.EstadoMateria;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,8 +15,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 //ESTA ES LA TABLA estudiante_materia QUE PERMITE OBTENER LAS NOTAS E INSCRIPCIONES DE UN ESTUDIANTE QUE CURSA UNA MATERIA
 
 
@@ -38,11 +34,16 @@ public class EstudianteMateria {
 
   @ManyToOne
   @JoinColumn(name="materia_id", nullable = false)
-  @JsonBackReference("materia-estudiante")
   private Materia materia;
 
   @Column(name="fecha_inscripcion")
   private LocalDate fechaInscripcion;
+
+  @Column(name="fecha_inicio")
+  private LocalDate fechaInicio;
+
+  @Column(name="fecha_fin")
+  private LocalDate fechaFin;
 
   @Column(name = "nota")
   private String nota;
