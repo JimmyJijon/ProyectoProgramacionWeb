@@ -25,7 +25,17 @@ const Login = () => {
   };
 
   return (
-    <div className="containerlog">
+    <div className="containerlog" style={{
+      backgroundImage: "url('/fondoLogin.png')", 
+    backgroundSize: "cover",  
+    backgroundRepeat: "no-repeat", 
+    backgroundPosition: "center center",
+    width: "100vw", 
+    height: "100vh", 
+    position: "fixed",
+    top: 0,
+    left: 0,
+    }}>
       <div className="login-container">
         <h2>Ingresa al SAT</h2>
         {error && <p className="error-message">{error}</p>}

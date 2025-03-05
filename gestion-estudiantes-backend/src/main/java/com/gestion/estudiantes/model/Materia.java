@@ -1,6 +1,7 @@
 package com.gestion.estudiantes.model;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -54,6 +55,6 @@ public class Materia {
     private List<MallaCurricular> mallasCurriculares;
 
     @OneToMany(mappedBy = "materia", cascade = CascadeType.ALL)
-    @JsonManagedReference("materia-estudiante") 
+    @JsonIgnore 
     private List<EstudianteMateria> estudianteMaterias;
 }

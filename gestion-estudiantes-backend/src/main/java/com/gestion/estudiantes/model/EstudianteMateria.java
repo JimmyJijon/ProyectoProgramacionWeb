@@ -2,6 +2,7 @@ package com.gestion.estudiantes.model;
 
 import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.gestion.estudiantes.model.enums.EstadoMateria;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Data;
 //ESTA ES LA TABLA estudiante_materia QUE PERMITE OBTENER LAS NOTAS E INSCRIPCIONES DE UN ESTUDIANTE QUE CURSA UNA MATERIA
 @Entity
 @Table(name = "estudiante_materia")
