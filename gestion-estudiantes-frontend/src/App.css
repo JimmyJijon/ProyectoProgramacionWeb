@@ -320,3 +320,62 @@ button[type="submit"]:hover {
 .cardMat{
   padding-top: 80px;
 }
+
+/* Calendario */
+/* Resaltado pequeño y parpadeante en eventos */
+.evento-activo {
+  position: relative;
+}
+
+.evento-activo::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: -7px;
+  width: 7px;
+  height: 7px;
+  background-color: red;
+  border-radius: 50%;
+  animation: blink 1s infinite alternate;
+}
+
+/* Efecto de parpadeo */
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+
+/* Asegura que los nombres de los días estén bien alineados */
+.p-datepicker-calendar thead th {
+  text-align: center !important;
+  padding: 5px 0;
+}
+
+.lista-eventos {
+  list-style-type: none;
+  padding: 0;
+}
+
+.evento-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.evento-item strong {
+  font-size: 16px;
+  display: block;
+  color: #333;
+}
+
+.evento-item p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #555;
+}

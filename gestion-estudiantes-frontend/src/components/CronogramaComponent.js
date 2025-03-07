@@ -4,10 +4,12 @@ import axios from "axios";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
+import { useNavigate } from "react-router-dom";
 
 function CronogramaComponent() {
     const { estudianteId } = useParams(); 
     const [materias, setMaterias] = useState([]);
+    const navigate = useNavigate();
 
     console.log("Estudiante ID recibido en Cronograma:", estudianteId);
 
@@ -47,6 +49,14 @@ function CronogramaComponent() {
 
     return (
         <div className="CronogramaComponent">
+            <div className="mb-4">
+            <Button 
+              label="Atrás" 
+              icon="pi pi-arrow-left" 
+              className="p-button-text"
+              onClick={() => navigate(-1)} 
+            />
+            </div>
             <Button label="Ir al horario" className="buttonHorario" />
             <h2>Cronograma del estudiante {estudianteId}</h2> {}
             <DataTable value={materias} tableStyle={{ minWidth: "50rem" }}>

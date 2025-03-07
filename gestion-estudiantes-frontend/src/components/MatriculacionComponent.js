@@ -4,12 +4,15 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
+import { useNavigate } from "react-router-dom";
+
 
 const MateriasDisponibles = ({ estudianteId: propEstudianteId }) => {
     const [materias, setMaterias] = useState([]);
     const [estudianteId, setEstudianteId] = useState(null);
     const [materiasInscritas, setMateriasInscritas] = useState([]);
     const toast = useRef(null);
+    const navigate = useNavigate();
 
  
     useEffect(() => {
@@ -148,6 +151,14 @@ const MateriasDisponibles = ({ estudianteId: propEstudianteId }) => {
 
     return (
         <div className="cardMat">
+            <div className="mb-4">
+                <Button 
+                  label="Atrás" 
+                  icon="pi pi-arrow-left" 
+                  className="p-button-text" 
+                  onClick={() => navigate(-1)}
+                />
+            </div>
             <Toast ref={toast} />
             <h2>Materias Disponibles</h2>
             <DataTable

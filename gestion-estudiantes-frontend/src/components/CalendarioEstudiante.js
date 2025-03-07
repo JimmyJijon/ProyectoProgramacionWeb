@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Calendar } from "primereact/calendar";
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
 import { addLocale } from "primereact/api";
-import "./CalendarioEstudiante.css";
+import axios from "axios"; // Para obtener los eventos desde la API
+import "../App.css";
 
 // Configuración del idioma español
 addLocale("es", {
@@ -18,17 +19,20 @@ addLocale("es", {
   monthNamesShort: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
 });
 
-// Lista de actividades con sus fechas
-const actividades = [
-  { fecha: "2025-02-14", evento: "Día de San Valentín - Celebración en la institución" },
-  { fecha: "2025-03-08", evento: "Día Internacional de la Mujer - Charla especial" },
-  { fecha: "2025-04-22", evento: "Día de la Tierra - Campaña de reciclaje" },
-];
-
 const CalendarioEstudiante = () => {
   const navigate = useNavigate();
   const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
-  const [actividadesDelDia, setActividadesDelDia] = useState([]);
+  const [eventos, setEventos] = useState([]); // Todos los eventos del calendario
+  const [eventosFiltrados, setEventosFiltrados] = useState([]); // Solo los eventos de la fecha seleccionada
+
+  // Cargar eventos desde la base de datos
+  useEffect(() => {
+    axios.get("http://localhost:8080/api/eventos")
+      .then(response => {
+        setEventos(response.data); // Guardamos todos los eventos
+      })
+      .catch(error => console.error("Error cargando eventos:", error));
+  }, []);
 
   // Función para cambiar el mes del calendario
   const cambiarMes = (cambio) => {
@@ -41,14 +45,10 @@ const CalendarioEstudiante = () => {
 
   // Función para personalizar los días con eventos en el calendario
   const customDateTemplate = (dateMeta) => {
-    if (!dateMeta.day) return null; // Previene errores en fechas vacías
-  
-    // Formateamos la fecha en formato YYYY-MM-DD
+    if (!dateMeta.day) return null;
     const dateString = `${dateMeta.year}-${String(dateMeta.month + 1).padStart(2, "0")}-${String(dateMeta.day).padStart(2, "0")}`;
-  
-    // Verificamos si la fecha tiene actividades
-    const tieneEvento = actividades.some((act) => act.fecha === dateString);
-  
+    const tieneEvento = eventos.some((evento) => evento.fecha === dateString);
+
     return (
       <div className={`p-datepicker-date ${tieneEvento ? "evento-activo" : ""}`}>
         {dateMeta.day}
@@ -56,18 +56,15 @@ const CalendarioEstudiante = () => {
     );
   };
 
-  // Función para manejar la selección de fecha y mostrar las actividades del día
+  // Función para manejar la selección de fecha y filtrar eventos de ese día
   const seleccionarFecha = (e) => {
     const nuevaFecha = e.value;
     setFechaSeleccionada(nuevaFecha);
 
-    // Obtener actividades del día seleccionado
     const dateString = nuevaFecha.toISOString().split("T")[0];
-    const actividadesFiltradas = actividades
-      .filter((act) => act.fecha === dateString)
-      .map((act) => act.evento);
-
-    setActividadesDelDia(actividadesFiltradas);
+    const eventosDelDia = eventos.filter(evento => evento.fecha === dateString);
+    
+    setEventosFiltrados(eventosDelDia);
   };
 
   return (
@@ -95,24 +92,27 @@ const CalendarioEstudiante = () => {
       </div>
 
       <div className="flex mt-5 justify-content-center gap-5">
-        {/* Se establece el locale a "es" y se usa dateTemplate */}
         <Calendar 
           value={fechaSeleccionada} 
           onChange={seleccionarFecha} 
           inline 
-          
           locale="es"
           dateTemplate={customDateTemplate}
         />
+
+        {/* Sección donde se muestran los eventos filtrados */}
         <div className="p-3 border-round shadow-2 w-30">
           <h3>Actividades del Día</h3>
-          {actividadesDelDia.length > 0 ? (
-            <ul>
-              {actividadesDelDia.map((evento, index) => (
-                <li key={index}>{evento}</li>
+          {eventosFiltrados.length > 0 ? (
+           <ul className="lista-eventos">
+              {eventosFiltrados.map((evento) => (
+               <li key={evento.id} className="evento-item">
+                  <strong>{evento.titulo}</strong>
+                  <p>{evento.descripcion}</p>
+                </li>
               ))}
             </ul>
-          ) : (
+         ) : (
             <p>No hay actividades programadas.</p>
           )}
         </div>
