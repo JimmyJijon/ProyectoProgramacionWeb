@@ -11,6 +11,8 @@ import 'primeicons/primeicons.css'; // Íconos de PrimeReact
 import 'primeflex/primeflex.css'; // Utilidades CSS como grids y flexbox
 import './index.css';
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

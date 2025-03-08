@@ -1,7 +1,8 @@
 package com.gestion.estudiantes.controller;
 
 import com.gestion.estudiantes.model.Usuario;
-import com.gestion.estudiantes.repository.usuario.UsuarioService;
+import com.gestion.estudiantes.service.UsuarioService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class LoginController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody Usuario usuario) {
         try {
-            Usuario usuarioRegistrado = usuarioService.registrar(usuario);
+            usuarioService.registrar(usuario);
             // Generar un token para el usuario recién registrado
             String tokenString = usuarioService.autenticar(usuario.getUsername(), usuario.getPassword());
             Map<String, String> response = new HashMap<>();
@@ -40,5 +41,19 @@ public class LoginController {
         } catch (RuntimeException e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }
+    }
+
+    // Método para obtener el perfil del usuario autenticado
+    @GetMapping("/perfil")
+    public ResponseEntity<?> obtenerPerfil(@RequestHeader("Authorization") String token) {
+        if (token == null || !token.startsWith("token_")) {
+            return ResponseEntity.status(401).body("No autorizado");
+        }
+
+        String username = token.split("_")[1]; // Extraer el username del token simple
+        Usuario usuario = usuarioService.getUsuarioByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        return ResponseEntity.ok(usuario);
     }
 }

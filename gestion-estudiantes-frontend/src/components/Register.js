@@ -33,7 +33,7 @@ const Register = () => {
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="username">Usuario:</label>
             <input
               id="username"
               type="text"
@@ -43,7 +43,7 @@ const Register = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Correo:</label>
             <input
               id="email"
               type="email"
@@ -53,7 +53,7 @@ const Register = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Contraseña:</label>
             <input
               id="password"
               type="password"
@@ -65,7 +65,7 @@ const Register = () => {
           <button type="submit">Registrarse</button>
         </form>
         <div className="register-link">
-          ¿Ya tienes una cuenta? <Link to="/login">Inicia sesión</Link>
+          ¿Ya tienes una cuenta? <Link to="/">Inicia sesión</Link>
         </div>
       </div>
     </div>

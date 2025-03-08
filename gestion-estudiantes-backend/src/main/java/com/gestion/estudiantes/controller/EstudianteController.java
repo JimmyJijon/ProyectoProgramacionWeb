@@ -1,10 +1,7 @@
 package com.gestion.estudiantes.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,70 +12,42 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.gestion.estudiantes.exception.ResourceNotFoundException;
 import com.gestion.estudiantes.model.Estudiante;
-import com.gestion.estudiantes.repository.EstudianteRepository;
+import com.gestion.estudiantes.service.EstudianteService;
 
 //AQUI ESTA EL API REST QUE PERMITIRA USAR LOS CRUD DE ESTUDIANTE HACIENDO PETICIONES DESDE EL FRONT REACT
 @CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 @RequestMapping("/api/v1")
 public class EstudianteController {
-  
-    @Autowired
-    private EstudianteRepository estudianteRepository;
-    
+    private final EstudianteService estudianteService;
+
+    public EstudianteController(EstudianteService estudianteService) {
+        this.estudianteService = estudianteService;
+    }
+
     @GetMapping("/estudiantes")
-    public List<Estudiante> listarEstudiantes(){
-        return estudianteRepository.findAll();
+    public List<Estudiante> listarEstudiantes() {
+        return estudianteService.listarEstudiantes();
     }
-    
+
     @PostMapping("/estudiantes")
-    //@RequestBody indica que el cuerpo (body) de la solicitud HTTP POST debe convertirse en un objeto Estudiante.
-    public Estudiante guardarEstudiante(@RequestBody Estudiante estudiante){
-        return estudianteRepository.save(estudiante);
+    public Estudiante guardarEstudiante(@RequestBody Estudiante estudiante) {
+        return estudianteService.guardarEstudiante(estudiante);
     }
-    
+
     @GetMapping("/estudiantes/{id}")
-    //@PathVariable Long id extrae el valor de {id} en la URL y lo pasa al método como parámetro.
-    public ResponseEntity<Estudiante> listarEstudiantePorId(@PathVariable Long id){
-        Estudiante estudiante = estudianteRepository.findById(id)
-                    .orElseThrow(() -> new ResourceNotFoundException("El estudiante con ese ID no existe: " + id));
-        return ResponseEntity.ok(estudiante);
+    public ResponseEntity<Estudiante> listarEstudiantePorId(@PathVariable Long id) {
+        return ResponseEntity.ok(estudianteService.obtenerEstudiantePorId(id));
     }
-    
+
     @PutMapping("/estudiantes/{id}")
-    public ResponseEntity<Estudiante> actualizarEstudiante(@PathVariable Long id, @RequestBody Estudiante estudianteRequest){
-        Estudiante estudiante = estudianteRepository.findById(id)
-                      .orElseThrow(() -> new ResourceNotFoundException("El estudiante con ese ID no existe : " + id));
-
-        estudiante.setNombre(estudianteRequest.getNombre());
-        estudiante.setApellido(estudianteRequest.getApellido());
-        estudiante.setEmail_institucional(estudianteRequest.getEmail_institucional());
-        estudiante.setEmail_personal(estudianteRequest.getEmail_personal());
-        estudiante.setCedula(estudianteRequest.getCedula());
-        estudiante.setFechaNacimiento(estudianteRequest.getFechaNacimiento());
-        estudiante.setEdad(estudianteRequest.getEdad());
-        estudiante.setEstadoCivil(estudianteRequest.getEstadoCivil());
-        estudiante.setPaisNacimiento(estudianteRequest.getPaisNacimiento());
-        estudiante.setPaisNacimiento(estudianteRequest.getPaisNacimiento());
-        estudiante.setCelular(estudianteRequest.getCelular());
-        /*no agregamos el atributo private List <EstudianteMateria> estudiantes; porque aun no se define si desde
-        este endpoint actualizaremos materias*/
-        Estudiante estudianteActualizado = estudianteRepository.save(estudiante);
-        return ResponseEntity.ok(estudianteActualizado);
+    public ResponseEntity<Estudiante> actualizarEstudiante(@PathVariable Long id, @RequestBody Estudiante estudiante) {
+        return ResponseEntity.ok(estudianteService.actualizarEstudiante(id, estudiante));
     }
-    
-    @DeleteMapping("/estudiantes/{id}")
-    public ResponseEntity<Map<String,Boolean>> eliminarEstudiante(@PathVariable Long id){
-      Estudiante estudiante = estudianteRepository.findById(id)
-                 .orElseThrow(() -> new ResourceNotFoundException("El estudiante con ese ID no existe : " + id));
 
-      estudiante.setActivo(false); // En lugar de eliminar, lo desactivamos
-      estudianteRepository.save(estudiante); //  Guardamos el cambio en la base de datos
-      Map<String,Boolean> response = new HashMap<>();
-      response.put("deleted",Boolean.TRUE);
-      return ResponseEntity.ok(response);
+    @DeleteMapping("/estudiantes/{id}")
+    public ResponseEntity<Map<String, Boolean>> eliminarEstudiante(@PathVariable Long id) {
+        return ResponseEntity.ok(estudianteService.desactivarEstudiante(id));
     }
 }

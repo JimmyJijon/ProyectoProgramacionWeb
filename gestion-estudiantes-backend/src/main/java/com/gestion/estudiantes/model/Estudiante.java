@@ -2,10 +2,7 @@ package com.gestion.estudiantes.model;
 
 import java.time.LocalDate;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,7 +35,7 @@ public class Estudiante {
   private String apellido;
 
   @Column(name = "email_institucional")
-  private String email_institucional;
+  private String emailInstitucional;
 
   @Column(name = "email_personal")
   private String email_personal;
@@ -65,15 +62,15 @@ public class Estudiante {
   private boolean activo = true;
 
 
-  @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL)
-  @JsonManagedReference // 🔹 Indica que esta es la parte "principal" de la relación
-  @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-  private List<EstudianteMateria> materias;
+  @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL, orphanRemoval = true)
+  @JsonManagedReference("estudiante-materia")
+  private List<EstudianteMateria> estudianteMaterias;//tabla hija
   
   /* @ManyToOne indica que un estudiante solo puede estar en una carrera.
   //@JoinColumn(name = "carrera_id") crea la clave foránea en la base de datos.*/
   @ManyToOne
   @JoinColumn(name = "carrera_id", nullable = false)
+  @JsonManagedReference("estudiante-carrera")//tabla padre
   private Carrera carrera;
   
 }
