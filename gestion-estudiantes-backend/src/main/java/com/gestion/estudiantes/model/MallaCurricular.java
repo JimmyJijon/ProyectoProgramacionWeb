@@ -22,7 +22,7 @@ public class MallaCurricular {
         inverseJoinColumns = @JoinColumn(name = "materia_id")
     )
 
-    @JsonIgnore
+    //@JsonIgnore
     private List<Materia> materias;
 
     @OneToOne
