@@ -2,15 +2,15 @@ import './App.css';
 import ListEstudiantesComponent from './components/ListEstudiantesComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import AddEstudianteComponent from './components/AddEstudianteComponent';
 import HomePageComponent from './components/HomePageComponent';
 import Login from './components/Login';
 import Register from './components/Register';
 import CronogramaComponent from './components/CronogramaComponent';
-import "primereact/resources/themes/lara-light-blue/theme.css";  // 🎨 Tema (puedes cambiarlo)
-import "primereact/resources/primereact.min.css";  // 📦 Estilos base de PrimeReact
-import "primeicons/primeicons.css";  // 🔥 Íconos de PrimeReact
+import "primereact/resources/themes/lara-light-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 import VidInduccionComponent from './components/VidInduccionComponent';
 import ProtectedRoute from './components/ProtectedRoute';
 import CalendarioEstudiante from './components/CalendarioEstudiante';
@@ -27,7 +27,7 @@ function App() {
         <div className='container'>
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            {/*<Route path="/register" element={<Register />} />*/}
 
             {/* Rutas protegidas */}
             <Route
@@ -109,8 +109,10 @@ function App() {
                   <MatriculacionComponent />
                 </ProtectedRoute>
               }
-
             />
+            
+            <Route path="*" element={<Navigate to="/" replace />} />
+
           </Routes>
         </div>
         <FooterComponent />

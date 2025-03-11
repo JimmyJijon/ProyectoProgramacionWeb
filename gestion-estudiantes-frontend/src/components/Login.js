@@ -18,6 +18,8 @@ const Login = () => {
         password
       });
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('estudianteId', response.data.estudiante_id); // Almacenar el estudianteId
+
       navigate('/home');
     } catch (err) {
       setError('Credenciales incorrectas');
@@ -62,9 +64,7 @@ const Login = () => {
           </div>
           <button type="submit">Acceder</button>
         </form>
-        <div className="register-link">
-          ¿No tienes una cuenta? <Link to="/register">Regístrate</Link>
-        </div>
+
       </div>
     </div>
   );

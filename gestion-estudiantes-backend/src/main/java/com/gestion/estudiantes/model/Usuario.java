@@ -3,6 +3,7 @@ package com.gestion.estudiantes.model;
 import jakarta.persistence.*;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gestion.estudiantes.model.enums.Role;
 
 @Entity
@@ -19,11 +20,8 @@ public class Usuario {
     @Column(nullable = false)
     private String password;
 
-    @Column(unique = true, nullable = false)
-    private String email;
-
     @Enumerated(EnumType.STRING)
-    private Role rol;  // Enum: ESTUDIANTE, PROFESOR, ADMIN
+    private Role rol; // Enum: ESTUDIANTE, PROFESOR, ADMIN
 
     public Role getRol() {
         return rol;
@@ -34,7 +32,8 @@ public class Usuario {
     }
 
     @OneToOne
-    @JoinColumn(name = "estudiante_id", nullable = true) // Relación con Estudiante
+    @JoinColumn(name = "estudiante_id") // Relación con Estudiante
+    @JsonIgnore
     private Estudiante estudiante;
 
     // Constructor vacío (obligatorio para JPA)
@@ -45,7 +44,6 @@ public class Usuario {
     public Usuario(String username, String password, String email) {
         this.username = username;
         this.password = password;
-        this.email = email;
     }
 
     // Getters y Setters
@@ -73,12 +71,12 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public Estudiante getEstudiante() {
+        return estudiante;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
     }
 
     // Equals y HashCode
@@ -103,7 +101,6 @@ public class Usuario {
         return "Usuario{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
                 '}';
     }
 }
