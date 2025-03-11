@@ -7,9 +7,9 @@ function HomePageComponent() {
     const [estudianteId, setEstudianteId] = useState(null);
 
     useEffect(() => {
-        const storedEstudianteId = localStorage.getItem('estudianteId'); // Obtenemos el estudianteId del localStorage
+        const storedEstudianteId = localStorage.getItem('estudianteId');
         if (storedEstudianteId) {
-            setEstudianteId(storedEstudianteId); // Si existe, lo seteamos
+            setEstudianteId(storedEstudianteId);
         } else {
             console.error("No se encontró el estudianteId en el localStorage.");
         }
@@ -26,7 +26,7 @@ function HomePageComponent() {
         { icono: "/fichasocioeconomica.png", texto: "Ficha socioeconómica" },
         { icono: "hojadevida.png", texto: "Hoja de vida del estudiante" },
         { icono: "matriculaciononline.png", texto: "Matriculación online", link: estudianteId ? `/matriculacion/${estudianteId}` : "#" }, 
-        { icono: "micronograma.png", texto: "Cronograma de mis materias y profesores", link: estudianteId ? `/cronograma/${estudianteId}` : "#" }, // ✅ Ahora pasa el ID 
+        { icono: "micronograma.png", texto: "Cronograma de mis materias y profesores", link: estudianteId ? `/cronograma/${estudianteId}` : "#" },
         { icono: "mensajeriainterna.png", texto: "Mensajeria interna" },
         { icono: "mifichamedica.png", texto: "Datos personales y familiares médicos" },
         { icono: "mimalla.png", texto: "Ver mi cumplimiento de malla" },
@@ -42,8 +42,7 @@ function HomePageComponent() {
 
     return (
         <div className="homePageComponent">
-            <div className="perfilComponent"></div>
-
+            {/* Contenedor del perfil */}
             <div className="EstContainer">
                 <div className="FotoDelEst">
                     <img className="imgEst" src="/userUnknown.webp" alt="Perfil Estudiante" />
@@ -51,7 +50,7 @@ function HomePageComponent() {
                 {estudianteId ? <EstudianteCard estudianteId={parseInt(estudianteId)} /> : <p>Cargando información...</p>}
             </div>
 
-            {}
+            {/* Contenedor de botones */}
             <div className="botones-container">
                 {botones.map((item, index) => (
                     item.link ? (
@@ -79,4 +78,3 @@ function HomePageComponent() {
 }
 
 export default HomePageComponent;
-
