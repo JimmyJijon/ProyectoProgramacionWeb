@@ -16,7 +16,7 @@ function HomePageComponent() {
     }, []);
 
     const botones = [
-        { icono: "/actividad-extracurricular.png", texto: "Actividad extracurricular" },
+        { icono: "/actividad-extracurricular.png", texto: "Actividad extracurricular"},
         { icono: "/aulavirtual.png", texto: "Aula virtual", link: "https://tesonline.academicok.com/login/index.php" },
         { icono: "/bolsalaboral.png", texto: "Bolsa laboral" },
         { icono: "/botondepagos.png", texto: "Botón de pagos" },
@@ -38,6 +38,7 @@ function HomePageComponent() {
         { icono: "solicituddecertificados.png", texto: "Solicitudes de certificados online" },
         { icono: "videosdeinduccion.png", texto: "Videos de inducción institucional", link: "/vidinduccion" },
         { icono: "vinculacioncomunidad.png", texto: "Vinculación con la comunidad" },
+        {icono: "añadirestudiante.png", texto: "Añadir estudiante", link: "/estudiantes"},
     ];
 
     return (
