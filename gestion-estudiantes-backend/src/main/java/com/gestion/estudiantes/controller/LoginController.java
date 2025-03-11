@@ -21,8 +21,19 @@ public class LoginController {
     public ResponseEntity<?> login(@RequestBody Usuario usuario) {
         try {
             String tokenString = usuarioService.autenticar(usuario.getUsername(), usuario.getPassword());
-            Map<String, String> response = new HashMap<>();
+
+            Usuario usuarioAutenticado = usuarioService.getUsuarioByUsername(usuario.getUsername())
+                    .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+            Long estudianteId = (usuarioAutenticado.getEstudiante() != null)
+                    ? usuarioAutenticado.getEstudiante().getId()
+                    : null;
+
+            Map<String, Object> response = new HashMap<>();
+
             response.put("token", tokenString);
+            response.put("estudiante_id", estudianteId);
+
             return ResponseEntity.ok().body(response);
         } catch (RuntimeException e) {
             return ResponseEntity.status(401).body(e.getMessage());

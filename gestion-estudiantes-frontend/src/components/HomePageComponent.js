@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import EstudianteCard from "./EstudianteCard";
-import EstudianteService from "../services/EstudianteService";
 
 function HomePageComponent() {
+    
     const [estudianteId, setEstudianteId] = useState(null);
 
     useEffect(() => {
-        EstudianteService.getEstudianteById(701) 
-            .then((response) => {
-                setEstudianteId(response.data.id);
-            })
-            .catch((error) => {
-                console.error("Error al obtener el ID del estudiante:", error);
-            });
+        const storedEstudianteId = localStorage.getItem('estudianteId'); // Obtenemos el estudianteId del localStorage
+        if (storedEstudianteId) {
+            setEstudianteId(storedEstudianteId); // Si existe, lo seteamos
+        } else {
+            console.error("No se encontró el estudianteId en el localStorage.");
+        }
     }, []);
 
     const botones = [
@@ -49,7 +48,7 @@ function HomePageComponent() {
                 <div className="FotoDelEst">
                     <img className="imgEst" src="/userUnknown.webp" alt="Perfil Estudiante" />
                 </div>
-                {estudianteId ? <EstudianteCard estudianteId={estudianteId} /> : <p>Cargando información...</p>}
+                {estudianteId ? <EstudianteCard estudianteId={parseInt(estudianteId)} /> : <p>Cargando información...</p>}
             </div>
 
             {}

@@ -19,9 +19,6 @@ public class UsuarioService {
         if (usuarioRepository.findByUsername(usuario.getUsername()).isPresent()) {
             throw new RuntimeException("El nombre de usuario ya está en uso");
         }
-        if (usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
-            throw new RuntimeException("El correo electrónico ya está en uso");
-        }
         // Guarda el usuario en la base de datos
         return usuarioRepository.save(usuario);
     }
