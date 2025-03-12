@@ -6,7 +6,6 @@ import '../App.css';
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -17,7 +16,6 @@ const Register = () => {
       const response = await axios.post('http://localhost:8080/api/v2/register', {
         username,
         password,
-        email
       });
       localStorage.setItem('token', response.data.token);
       navigate('/home');
@@ -39,16 +37,6 @@ const Register = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Correo:</label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>

@@ -2,6 +2,7 @@ package com.gestion.estudiantes.model;
 
 import java.time.LocalDate;
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -21,17 +22,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name="estudiante")
+@Table(name = "estudiante")
 public class Estudiante {
-  //ESTA ES LA TABLA ESTUDIANTE QUE APARECE EN POSTGRES
+  // ESTA ES LA TABLA ESTUDIANTE QUE APARECE EN POSTGRES
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  @Column(name="nombre")
+  @Column(name = "nombre")
   private String nombre;
 
-  @Column(name="apellido")
+  @Column(name = "apellido")
   private String apellido;
 
   @Column(name = "email_institucional")
@@ -43,9 +44,9 @@ public class Estudiante {
   @Column(name = "Cedula")
   private String cedula;
 
-  @Column(name= "fecha_nacimiento")
+  @Column(name = "fecha_nacimiento")
   private LocalDate fechaNacimiento;
-  
+
   @Column(name = "edad")
   private Integer edad;
 
@@ -61,16 +62,19 @@ public class Estudiante {
   @Column(name = "activo")
   private boolean activo = true;
 
-
   @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL, orphanRemoval = true)
   @JsonManagedReference("estudiante-materia")
-  private List<EstudianteMateria> estudianteMaterias;//tabla hija
-  
-  /* @ManyToOne indica que un estudiante solo puede estar en una carrera.
-  //@JoinColumn(name = "carrera_id") crea la clave foránea en la base de datos.*/
+  private List<EstudianteMateria> estudianteMaterias;// tabla hija
+
+  /*
+   * @ManyToOne indica que un estudiante solo puede estar en una carrera.
+   * //@JoinColumn(name = "carrera_id") crea la clave foránea en la base de datos.
+   */
+
+  // @JsonIgnoreProperties("usuario")
   @ManyToOne
   @JoinColumn(name = "carrera_id", nullable = false)
-  @JsonManagedReference("estudiante-carrera")//tabla padre
+  @JsonManagedReference("estudiante-carrera") // tabla padre
   private Carrera carrera;
-  
+
 }
