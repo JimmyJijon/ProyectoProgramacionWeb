@@ -1,20 +1,21 @@
-import './App.css';
-import ListEstudiantesComponent from './components/ListEstudiantesComponent';
-import HeaderComponent from './components/HeaderComponent';
-import FooterComponent from './components/FooterComponent';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AddEstudianteComponent from './components/AddEstudianteComponent';
-import HomePageComponent from './components/HomePageComponent';
-import Login from './components/Login';
-import Register from './components/Register';
-import CronogramaComponent from './components/CronogramaComponent';
-import "primereact/resources/themes/lara-light-blue/theme.css";  // 🎨 Tema (puedes cambiarlo)
-import "primereact/resources/primereact.min.css";  // 📦 Estilos base de PrimeReact
-import "primeicons/primeicons.css";  // 🔥 Íconos de PrimeReact
-import VidInduccionComponent from './components/VidInduccionComponent';
-import ProtectedRoute from './components/ProtectedRoute';
-import CalendarioEstudiante from './components/CalendarioEstudiante';
-import MatriculacionComponent from './components/MatriculacionComponent';
+import "./App.css";
+import ListEstudiantesComponent from "./components/ListEstudiantesComponent";
+import HeaderComponent from "./components/HeaderComponent";
+import FooterComponent from "./components/FooterComponent";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AddEstudianteComponent from "./components/AddEstudianteComponent";
+import HomePageComponent from "./components/HomePageComponent";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import CronogramaComponent from "./components/CronogramaComponent";
+import "primereact/resources/themes/lara-light-blue/theme.css"; // 🎨 Tema (puedes cambiarlo)
+import "primereact/resources/primereact.min.css"; // 📦 Estilos base de PrimeReact
+import "primeicons/primeicons.css"; // 🔥 Íconos de PrimeReact
+import VidInduccionComponent from "./components/VidInduccionComponent";
+import ProtectedRoute from "./components/ProtectedRoute";
+import CalendarioEstudiante from "./components/CalendarioEstudiante";
+import MatriculacionComponent from "./components/MatriculacionComponent";
+import MallaCurricular from "./components/MallaCurricularComponet";
 
 // ESTE COMPONENTE ES EL PRINCIPAL DE REACT, AQUI SE MANEJAN LAS RUTAS DE LOS COMPONENTES
 //AQUI LLAMAMOS A LOS COMPONENTES PARA QUE SE MUESTREN EN PANTALLA DE FORMA ORDENADA
@@ -24,10 +25,11 @@ function App() {
     <div>
       <BrowserRouter>
         <HeaderComponent />
-        <div className='container'>
+        <div className="container">
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/malla" element={<MallaCurricular />}></Route>
 
             {/* Rutas protegidas */}
             <Route
@@ -109,7 +111,6 @@ function App() {
                   <MatriculacionComponent />
                 </ProtectedRoute>
               }
-
             />
           </Routes>
         </div>
