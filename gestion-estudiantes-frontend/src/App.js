@@ -15,6 +15,7 @@ import VidInduccionComponent from './components/VidInduccionComponent';
 import ProtectedRoute from './components/ProtectedRoute';
 import CalendarioEstudiante from './components/CalendarioEstudiante';
 import MatriculacionComponent from './components/MatriculacionComponent';
+import MallaCurricularComponent from "./components/MallaCurricularComponent";
 
 // ESTE COMPONENTE ES EL PRINCIPAL DE REACT, AQUI SE MANEJAN LAS RUTAS DE LOS COMPONENTES
 //AQUI LLAMAMOS A LOS COMPONENTES PARA QUE SE MUESTREN EN PANTALLA DE FORMA ORDENADA
@@ -107,6 +108,15 @@ function App() {
               element={
                 <ProtectedRoute>
                   <MatriculacionComponent />
+                </ProtectedRoute>
+              }
+            />
+
+<Route
+              path="/malla"
+              element={
+                <ProtectedRoute>
+                  <MallaCurricularComponent/>
                 </ProtectedRoute>
               }
             />

@@ -55,6 +55,11 @@ function HomePageComponent() {
         { icono: "solicituddecertificados.png", texto: "Solicitudes de certificados online" },
         { icono: "videosdeinduccion.png", texto: "Videos de inducción institucional", link: "/vidinduccion" },
         { icono: "vinculacioncomunidad.png", texto: "Vinculación con la comunidad" },
+        {
+            icono: "mimalla.png",
+            texto: "Ver mi cumplimiento de malla",
+            link: "/malla",
+          }
     ];
 
     return (
