@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import EstudianteCard from "./EstudianteCard";
-import EstudianteService from "../services/EstudianteService";
 
 function HomePageComponent() {
   const [estudianteId, setEstudianteId] = useState(null);

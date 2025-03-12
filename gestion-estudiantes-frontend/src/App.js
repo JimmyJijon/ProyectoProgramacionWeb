@@ -2,7 +2,7 @@ import "./App.css";
 import ListEstudiantesComponent from "./components/ListEstudiantesComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import FooterComponent from "./components/FooterComponent";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import AddEstudianteComponent from "./components/AddEstudianteComponent";
 import HomePageComponent from "./components/HomePageComponent";
 import Login from "./components/Login";
