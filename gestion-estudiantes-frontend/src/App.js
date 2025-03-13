@@ -15,6 +15,7 @@ import VidInduccionComponent from './components/VidInduccionComponent';
 import ProtectedRoute from './components/ProtectedRoute';
 import CalendarioEstudiante from './components/CalendarioEstudiante';
 import MatriculacionComponent from './components/MatriculacionComponent';
+import PaginaMateriasComponent from './components/PaginaMateriasComponent'; 
 import PaginaMateriasComponent from './components/PaginaMateriasComponent'; // Nueva vista para materias
 
 // ESTE COMPONENTE ES EL PRINCIPAL DE REACT, AQUI SE MANEJAN LAS RUTAS DE LOS COMPONENTES

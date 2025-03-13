@@ -18,7 +18,7 @@ export default function TablaMateriasComponent({ materias }) {
         label="Detalles"
         icon="pi pi-info-circle"
         className="p-button-text p-button-primary"
-        onClick={() => alert(`Detalles de la materia: ${rowData.materia}`)}
+        onClick={() => alert(`Detalles de la materia: ${rowData.materia ? rowData.materia.nombre : 'N/A'}`)}
       />
     );
   };
@@ -33,15 +33,12 @@ export default function TablaMateriasComponent({ materias }) {
         sortMode="multiple"
         emptyMessage="No se encontraron materias."
       >
-        <Column field="materia" header="Materia" sortable />
-        <Column field="nrc" header="NRC" sortable />
-        <Column field="docente" header="Docente" sortable />
-        <Column field="nota1" header="Nota 1" sortable />
-        <Column field="nota2" header="Nota 2" sortable />
-        <Column field="nota3" header="Nota 3" sortable />
-        <Column field="notaFinal" header="Nota Final" sortable />
-        <Column field="porcentaje" header="Porcentaje" sortable />
+        <Column field="materia.nombre" header="Materia" sortable />
+        <Column field="materia.codigo" header="Código" sortable />
+        <Column field="materia.profesor.nombre" header="Docente" sortable />
+        <Column field="nota" header="Nota" sortable />
         <Column field="estado" header="Estado" sortable />
+        <Column field="periodoAcademico" header="Periodo Académico" sortable />
         <Column body={plantillaAcciones} header="Acciones" />
       </DataTable>
     </div>

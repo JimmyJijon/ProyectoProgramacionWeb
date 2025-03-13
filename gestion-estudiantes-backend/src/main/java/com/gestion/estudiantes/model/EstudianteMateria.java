@@ -31,7 +31,7 @@ public class EstudianteMateria {
 
   @ManyToOne
   @JoinColumn(name="materia_id", nullable = false)
-  @JsonBackReference(value = "materia-estudiantes") // 🔹 Evita recursión infinita en Materia
+  @JsonBackReference(value = "materia-estudiantes")
   private Materia materia;
 
   @Column(name="fecha_inscripcion")
