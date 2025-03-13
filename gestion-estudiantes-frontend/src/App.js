@@ -88,7 +88,7 @@ function App() {
             />
             {/* Nueva ruta para la vista de materias */}
             <Route 
-              path="/materias"
+              path="/pagina-materias"
               element={
                 <ProtectedRoute>
                   <PaginaMateriasComponent />

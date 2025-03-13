@@ -39,6 +39,9 @@ public class EstudianteMateria {
   @Column(name = "nota")
   private String nota;
 
-  
+  @Column(name = "estado")
+  @Enumerated(EnumType.STRING)  // 🔹 Indica que el campo es de tipo Enum
+  private EstadoMateria estado;
+
 }
 

@@ -22,7 +22,7 @@ function HomePageComponent() {
     { icono: "mimalla.png", texto: "Ver mi cumplimiento de malla" },
     { icono: "misfinanzas.png", texto: "Mis rubros y deuda" },
     { icono: "mishorarios.png", texto: "Ver mis horarios de clases programados para el periodo" },
-    { icono: "mismaterias.png", texto: "Notas y asistencia en el periodo lectivo" },
+    { icono: "mismaterias.png", texto: "Notas y asistencia en el periodo lectivo", link: "/pagina-materias" },
     { icono: "misplanes.png", texto: "Resumen de mis planes contratados" },
     { icono: "recordacademico.png", texto: "Notas obtenidas en la carrera" },
     { icono: "solicituddecertificados.png", texto: "Solicitudes de certificados online" },

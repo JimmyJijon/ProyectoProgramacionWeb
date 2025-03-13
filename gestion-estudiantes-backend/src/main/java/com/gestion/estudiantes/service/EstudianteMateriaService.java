@@ -38,4 +38,8 @@ public class EstudianteMateriaService {
     public void actualizarEstadoMateria(Long estudianteId, Long materiaId, EstadoMateria nuevoEstado) {
         estudianteMateriaRepository.actualizarEstado(nuevoEstado, estudianteId, materiaId);
     }
+
+    public List<EstudianteMateria> getAllEstudianteMaterias() {
+        return estudianteMateriaRepository.findAll();
+    }
 }

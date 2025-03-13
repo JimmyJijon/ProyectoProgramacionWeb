@@ -24,6 +24,37 @@ class EstudianteService{
    deleteEstudiante(estudianteId){
     return axios.delete(ESTUDIANTE_BASE_REST_API_URL + '/' + estudianteId)
    }
+
+   getEstudianteMaterias(){
+    return axios.get("http://localhost:8080/api/v1/estudiante-materias");
+   }
+
+   getMateriaEstudiante(estudianteId){
+    return axios.get("http://localhost:8080/api/v1/materia-estudiante/" + estudianteId);
+   }
+
+   getEstudianteMateria(materiaId){
+    return axios.get("http://localhost:8080/api/v1/estudiante-materia/" + materiaId);
+   }
+
+   getEstudianteMateriaNota(estudianteId, materiaId){
+    return axios.get("http://localhost:8080/api/v1/estudiante-materia/nota", {
+        params: {
+            estudianteId: estudianteId,
+            materiaId: materiaId
+        }
+    });
+   }
+
+   actualizarEstadoEstudianteMateria(estudianteId, materiaId, nuevoEstado){
+    return axios.put("http://localhost:8080/api/v1/estudiante-materia/actualizar-estado", null, {
+        params: {
+            estudianteId: estudianteId,
+            materiaId: materiaId,
+            nuevoEstado: nuevoEstado
+        }
+    });
+   }
 }
 
 export default new EstudianteService();
