@@ -25,12 +25,26 @@ function HomePageComponent() {
   
 
   const botones = [
-    { icono: "/actividad-extracurricular.png", texto: "Actividad extracurricular" },
-    { icono: "/aulavirtual.png", texto: "Aula virtual", link: "https://tesonline.academicok.com/login/index.php" },
+    {
+      icono: "/actividad-extracurricular.png",
+      texto: "Actividad extracurricular",
+    },
+    {
+      icono: "/aulavirtual.png",
+      texto: "Aula virtual",
+      link: "https://tesonline.academicok.com/login/index.php",
+    },
     { icono: "/bolsalaboral.png", texto: "Bolsa laboral" },
     { icono: "/botondepagos.png", texto: "Botón de pagos" },
-    { icono: "/calendario.png", texto: "Calendario de actividades de la institución", link: "/calendario" },
-    { icono: "/evaluaciondemisprofesores.png", texto: "Evaluación del alumno a sus docentes" },
+    {
+      icono: "/calendario.png",
+      texto: "Calendario de actividades de la institución",
+      link: "/calendario",
+    },
+    {
+      icono: "/evaluaciondemisprofesores.png",
+      texto: "Evaluación del alumno a sus docentes",
+    },
     { icono: "/facturas.png", texto: "Facturas emitidas" },
     { icono: "/fichasocioeconomica.png", texto: "Ficha socioeconómica" },
     { icono: "hojadevida.png", texto: "Hoja de vida del estudiante" },
@@ -52,9 +66,24 @@ function HomePageComponent() {
     { icono: "mismaterias.png", texto: "Notas y asistencia en el periodo lectivo", link: "/pagina-materias", link: "/pagina-materias" },
     { icono: "misplanes.png", texto: "Resumen de mis planes contratados" },
     { icono: "recordacademico.png", texto: "Notas obtenidas en la carrera" },
-    { icono: "solicituddecertificados.png", texto: "Solicitudes de certificados online" },
-    { icono: "videosdeinduccion.png", texto: "Videos de inducción institucional", link: "/vidinduccion" },
-    { icono: "vinculacioncomunidad.png", texto: "Vinculación con la comunidad" },
+    {
+      icono: "solicituddecertificados.png",
+      texto: "Solicitudes de certificados online",
+    },
+    {
+      icono: "videosdeinduccion.png",
+      texto: "Videos de inducción institucional",
+      link: "/vidinduccion",
+    },
+    {
+      icono: "vinculacioncomunidad.png",
+      texto: "Vinculación con la comunidad",
+    },
+    {
+      icono: "añadirestudiante.png",
+      texto: "Añadir estudiante",
+      link: "/estudiantes",
+    },
   ];
 
   return (

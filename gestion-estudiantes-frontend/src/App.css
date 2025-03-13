@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 
 .footer {
@@ -94,6 +95,19 @@ html, body {
   height: 35px;
 }
 
+.EstContainer {
+  background-color: rgb(236, 241, 239);
+  height: 700px;
+  width: 400px;
+  position: fixed; 
+  left: 50px; 
+  top: 150px; 
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
 .FotoDelEst{
   margin-top: 30px;
   width: 270px;
@@ -158,6 +172,16 @@ html, body {
   width: 50px; 
   height: 50px;
   margin-bottom: 10px;
+}
+
+.boton-item span {
+  font-family: 'Poppins', sans-serif; 
+  font-size: 14px; 
+  font-weight: 600; 
+  color: #900; 
+  line-height: 1.2;
+  text-align: center;
+  padding: 0 5px;
 }
 
 .boton-item span {

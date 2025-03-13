@@ -37,6 +37,12 @@ public class EstudianteMateria {
   @Column(name="fecha_inscripcion")
   private LocalDate fechaInscripcion;
 
+  @Column(name="fecha_inicio")
+  private LocalDate fechaInicio;
+
+  @Column(name="fecha_fin")
+  private LocalDate fechaFin;
+
   // Campo existente de nota, que se podría usar como notaFinal o eliminarlo si se crean notas individuales
   @Column(name = "nota")
   private String nota;

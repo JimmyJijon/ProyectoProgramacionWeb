@@ -27,7 +27,7 @@ public class LoginController {
 
             Long estudianteId = (usuarioAutenticado.getEstudiante() != null)
                     ? usuarioAutenticado.getEstudiante().getId()
-                    : usuarioAutenticado.getEstudianteIdColumn();
+                    : null;
 
             Map<String, Object> response = new HashMap<>();
 
