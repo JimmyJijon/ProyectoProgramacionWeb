@@ -21,29 +21,35 @@ public class EstudianteMateriaController {
 
     @GetMapping("/materia-estudiante/{estudianteId}")
     public ResponseEntity<List<EstudianteMateria>> obtenerMateriasPorEstudiante(@PathVariable Long estudianteId) {
-    List<EstudianteMateria> materias = estudianteMateriaService.obtenerMateriasPorEstudiante(estudianteId);
-    
-    if (materias.isEmpty()) {
-        return ResponseEntity.noContent().build();
+        List<EstudianteMateria> materias = estudianteMateriaService.obtenerMateriasPorEstudiante(estudianteId);
+        if (materias.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(materias);
     }
-
-    return ResponseEntity.ok(materias);
-}
-
 
     @GetMapping("/estudiante-materia/{materiaId}")
     public List<EstudianteMateria> obtenerEstudiantesPorMateria(@PathVariable Long materiaId) {
         return estudianteMateriaService.obtenerEstudiantesPorMateria(materiaId);
     }
 
-    @GetMapping("estudiante-materia/nota")
+    @GetMapping("/estudiante-materia/nota")
     public Optional<Double> obtenerNota(@RequestParam Long estudianteId, @RequestParam Long materiaId) {
         return estudianteMateriaService.obtenerNota(estudianteId, materiaId);
     }
 
-    @PutMapping("estudiante-materia/actualizar-estado")
+    @PutMapping("/estudiante-materia/actualizar-estado")
     public String actualizarEstadoMateria(@RequestParam Long estudianteId, @RequestParam Long materiaId, @RequestParam EstadoMateria nuevoEstado) {
         estudianteMateriaService.actualizarEstadoMateria(estudianteId, materiaId, nuevoEstado);
         return "Estado actualizado correctamente";
+    }
+
+    @GetMapping("/api/v1/estudiante-materias-todas")
+    public ResponseEntity<List<EstudianteMateria>> getAllEstudianteMaterias() {
+        List<EstudianteMateria> materias = estudianteMateriaService.getAllEstudianteMaterias();
+        if (materias.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(materias);
     }
 }

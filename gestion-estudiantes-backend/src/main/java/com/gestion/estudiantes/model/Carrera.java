@@ -31,5 +31,37 @@ public class Carrera {
     @OneToOne(mappedBy = "carrera", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference("carrera-malla")
     private MallaCurricular mallaCurricular;
-    
+
+    // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public List<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(List<Estudiante> estudiantes) {
+        this.estudiantes = estudiantes;
+    }
+
+    public MallaCurricular getMallaCurricular() {
+        return mallaCurricular;
+    }
+
+    public void setMallaCurricular(MallaCurricular mallaCurricular) {
+        this.mallaCurricular = mallaCurricular;
+    }
 }
