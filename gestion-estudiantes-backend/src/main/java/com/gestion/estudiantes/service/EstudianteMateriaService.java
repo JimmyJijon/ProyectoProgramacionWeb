@@ -1,20 +1,21 @@
 package com.gestion.estudiantes.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.gestion.estudiantes.model.Estudiante;
 import com.gestion.estudiantes.model.EstudianteMateria;
 import com.gestion.estudiantes.model.Materia;
 import com.gestion.estudiantes.model.enums.EstadoMateria;
 import com.gestion.estudiantes.repository.EstudianteMateriaRepository;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class EstudianteMateriaService {
-    private final EstudianteMateriaRepository estudianteMateriaRepository;
+
+    @Autowired
+    private EstudianteMateriaRepository estudianteMateriaRepository;
     private final EstudianteService estudianteService;
     private final MateriaService materiaService;
 
@@ -70,10 +71,20 @@ public class EstudianteMateriaService {
         // Guardar en la base de datos
         return estudianteMateriaRepository.save(nuevaInscripcion);
     }
-}
-
 
     public List<EstudianteMateria> getAllEstudianteMaterias() {
         return estudianteMateriaRepository.findAll();
+    }
+
+    public EstudianteMateria saveEstudianteMateria(EstudianteMateria estudianteMateria) {
+        return estudianteMateriaRepository.save(estudianteMateria);
+    }
+
+    public EstudianteMateria getEstudianteMateria(Long id) {
+        return estudianteMateriaRepository.findById(id).orElse(null);
+    }
+
+    public void deleteEstudianteMateria(Long id) {
+        estudianteMateriaRepository.deleteById(id);
     }
 }

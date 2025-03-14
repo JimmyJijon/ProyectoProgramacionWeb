@@ -24,7 +24,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "estudiante")
 public class Estudiante {
-  // ESTA ES LA TABLA ESTUDIANTE QUE APARECE EN POSTGRES
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
@@ -39,9 +38,9 @@ public class Estudiante {
   private String emailInstitucional;
 
   @Column(name = "email_personal")
-  private String email_personal;
+  private String emailPersonal;
 
-  @Column(name = "Cedula")
+  @Column(name = "cedula")
   private String cedula;
 
   @Column(name = "fecha_nacimiento")
@@ -64,17 +63,123 @@ public class Estudiante {
 
   @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL, orphanRemoval = true)
   @JsonManagedReference("estudiante-materia")
-  private List<EstudianteMateria> estudianteMaterias;// tabla hija
+  private List<EstudianteMateria> estudianteMaterias;
 
-  /*
-   * @ManyToOne indica que un estudiante solo puede estar en una carrera.
-   * //@JoinColumn(name = "carrera_id") crea la clave foránea en la base de datos.
-   */
-
-  // @JsonIgnoreProperties("usuario")
   @ManyToOne
   @JoinColumn(name = "carrera_id", nullable = false)
-  @JsonManagedReference("estudiante-carrera") // tabla padre
+  @JsonManagedReference("estudiante-carrera")
   private Carrera carrera;
 
+  // Getters y Setters
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public String getNombre() {
+    return nombre;
+  }
+
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  public String getApellido() {
+    return apellido;
+  }
+
+  public void setApellido(String apellido) {
+    this.apellido = apellido;
+  }
+
+  public String getEmailInstitucional() {
+    return emailInstitucional;
+  }
+
+  public void setEmailInstitucional(String emailInstitucional) {
+    this.emailInstitucional = emailInstitucional;
+  }
+
+  public String getEmailPersonal() {
+    return emailPersonal;
+  }
+
+  public void setEmailPersonal(String emailPersonal) {
+    this.emailPersonal = emailPersonal;
+  }
+
+  public String getCedula() {
+    return cedula;
+  }
+
+  public void setCedula(String cedula) {
+    this.cedula = cedula;
+  }
+
+  public LocalDate getFechaNacimiento() {
+    return fechaNacimiento;
+  }
+
+  public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    this.fechaNacimiento = fechaNacimiento;
+  }
+
+  public Integer getEdad() {
+    return edad;
+  }
+
+  public void setEdad(Integer edad) {
+    this.edad = edad;
+  }
+
+  public String getEstadoCivil() {
+    return estadoCivil;
+  }
+
+  public void setEstadoCivil(String estadoCivil) {
+    this.estadoCivil = estadoCivil;
+  }
+
+  public String getPaisNacimiento() {
+    return paisNacimiento;
+  }
+
+  public void setPaisNacimiento(String paisNacimiento) {
+    this.paisNacimiento = paisNacimiento;
+  }
+
+  public String getCelular() {
+    return celular;
+  }
+
+  public void setCelular(String celular) {
+    this.celular = celular;
+  }
+
+  public boolean isActivo() {
+    return activo;
+  }
+
+  public void setActivo(boolean activo) {
+    this.activo = activo;
+  }
+
+  public List<EstudianteMateria> getEstudianteMaterias() {
+    return estudianteMaterias;
+  }
+
+  public void setEstudianteMaterias(List<EstudianteMateria> estudianteMaterias) {
+    this.estudianteMaterias = estudianteMaterias;
+  }
+
+  public Carrera getCarrera() {
+    return carrera;
+  }
+
+  public void setCarrera(Carrera carrera) {
+    this.carrera = carrera;
+  }
 }

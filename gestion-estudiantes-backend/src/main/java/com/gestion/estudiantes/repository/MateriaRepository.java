@@ -9,28 +9,29 @@ import org.springframework.stereotype.Repository;
 
 import com.gestion.estudiantes.model.Materia;
 
-
-/*esta clase permite utilizar los metodos CRUD que interactuan con la tabla materia en POSTGRES 
-(Spring permite usarlos mediante extends JpaRepository, sin necesidad de escribirlos manualmente)*/
-
 @Repository
 public interface MateriaRepository extends JpaRepository<Materia, Long> {
 
-    //  Buscar materia por código (debe ser único)
+    // Buscar materia por código (debe ser único)
     Optional<Materia> findByCodigo(String codigo);
 
-    //  Buscar materias por nombre (coincidencias parciales, ignorando mayúsculas/minúsculas)
+    // Buscar materias por nombre (coincidencias parciales, ignorando mayúsculas/minúsculas)
     List<Materia> findByNombreContainingIgnoreCase(String nombre);
 
-    //  Obtener todas las materias activas
+    // Obtener todas las materias activas
     List<Materia> findByActivoTrue();
 
-    //  Obtener materias asignadas a un profesor específico
+    // Obtener materias asignadas a un profesor específico
     List<Materia> findByProfesorId(Long profesorId);
 
+    // Obtener materias asociadas a una malla curricular
     @Query("SELECT m FROM Materia m JOIN m.mallasCurriculares mc WHERE mc.id = :mallaId")
     List<Materia> findByMallaCurricular(@Param("mallaId") Long mallaId);
 
-    //  Obtener materias con más de X créditos
+    // Obtener materias con más de X créditos
     List<Materia> findByCreditosGreaterThanEqual(int creditos);
+
+    // Obtener materias asignadas a un estudiante específico
+    @Query("SELECT em.materia FROM EstudianteMateria em WHERE em.estudiante.id = :estudianteId")
+    List<Materia> findByEstudianteId(@Param("estudianteId") Long estudianteId);
 }

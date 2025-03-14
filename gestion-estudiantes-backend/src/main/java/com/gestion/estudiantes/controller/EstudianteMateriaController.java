@@ -44,7 +44,7 @@ public class EstudianteMateriaController {
         return "Estado actualizado correctamente";
     }
 
-    @GetMapping("/estudiante-materias")
+    @GetMapping("/api/v1/estudiante-materias-todas")
     public ResponseEntity<List<EstudianteMateria>> getAllEstudianteMaterias() {
         List<EstudianteMateria> materias = estudianteMateriaService.getAllEstudianteMaterias();
         if (materias.isEmpty()) {

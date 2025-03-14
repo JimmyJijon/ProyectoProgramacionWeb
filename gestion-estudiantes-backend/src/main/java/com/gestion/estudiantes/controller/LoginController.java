@@ -72,7 +72,6 @@ public class LoginController {
         response.put("password", usuario.getPassword());
         response.put("rol", usuario.getRol());
         response.put("estudiante_id", usuario.getEstudianteIdColumn());
-        response.put("estudiante_id", usuario.getEstudianteId());
 
         return ResponseEntity.ok(response);
     }
