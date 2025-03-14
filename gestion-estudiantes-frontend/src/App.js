@@ -16,12 +16,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import CalendarioEstudiante from './components/CalendarioEstudiante';
 import MatriculacionComponent from './components/MatriculacionComponent';
 import MallaCurricularComponent from "./components/MallaCurricularComponent";
-
-// ESTE COMPONENTE ES EL PRINCIPAL DE REACT, AQUI SE MANEJAN LAS RUTAS DE LOS COMPONENTES
-//AQUI LLAMAMOS A LOS COMPONENTES PARA QUE SE MUESTREN EN PANTALLA DE FORMA ORDENADA
 import PaginaMateriasComponent from './components/PaginaMateriasComponent';
 import MallaCurricular from "./components/MallaCurricularComponet";
-import MatriculacionComponent from './components/MatriculacionComponent';  // ✅ Importación agregada
 
 function App() {
   return (
@@ -32,7 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/malla" element={<MallaCurricular />}></Route>
+            <Route path="/malla" element={<MallaCurricular />} />
 
             {/* Rutas protegidas */}
             <Route path="/home" element={<ProtectedRoute><HomePageComponent /></ProtectedRoute>} />
@@ -46,12 +42,9 @@ function App() {
             <Route path="/matriculacion" element={<ProtectedRoute><MatriculacionComponent /></ProtectedRoute>} />
             <Route path="/matriculacion/:estudianteId" element={<ProtectedRoute><MatriculacionComponent /></ProtectedRoute>} />
             <Route path="/pagina-materias" element={<ProtectedRoute><PaginaMateriasComponent /></ProtectedRoute>} />
-            <Route path="/malla" element={ <ProtectedRoute> <MallaCurricularComponent/> </ProtectedRoute>
-              }
-            />
+            <Route path="/malla" element={<ProtectedRoute><MallaCurricularComponent /></ProtectedRoute>} />
             
             <Route path="*" element={<Navigate to="/" replace />} />
-
           </Routes>
         </div>
         <FooterComponent />

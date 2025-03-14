@@ -89,7 +89,7 @@ public class EstudianteMateriaService {
     nuevaInscripcion.setPeriodoAcademico(periodoAcademico);
     nuevaInscripcion.setFechaInicio(fechaInicio);
     nuevaInscripcion.setFechaFin(fechaFin);
-    nuevaInscripcion.setNota(nota);
+    nuevaInscripcion.setNota(Double.parseDouble(nota));
 
         // Guardar en la base de datos
         return estudianteMateriaRepository.save(nuevaInscripcion);
