@@ -1,11 +1,14 @@
 package com.gestion.estudiantes.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.gestion.estudiantes.model.EstudianteMateria;
 import com.gestion.estudiantes.model.enums.EstadoMateria;
 import com.gestion.estudiantes.service.EstudianteMateriaService;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,6 +46,24 @@ public class EstudianteMateriaController {
         estudianteMateriaService.actualizarEstadoMateria(estudianteId, materiaId, nuevoEstado);
         return "Estado actualizado correctamente";
     }
+
+
+    @PostMapping("estudiante-materia/inscribir")
+    public ResponseEntity<?> inscribirEstudiante(
+        @RequestParam Long estudianteId, 
+        @RequestParam Long materiaId
+) {
+    try {
+        // Llama al servicio sin necesidad de pasar más datos
+        EstudianteMateria inscripcion = estudianteMateriaService.inscribirEstudianteEnMateria(estudianteId, materiaId, null, null, null, null, null);
+
+        return ResponseEntity.ok(inscripcion);
+    } catch (IllegalArgumentException e) {
+        return ResponseEntity.badRequest().body("⚠️ Error: " + e.getMessage());
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("🚨 Error al inscribir estudiante: " + e.getMessage());
+    }
+}
 
     @GetMapping("/api/v1/estudiante-materias-todas")
     public ResponseEntity<List<EstudianteMateria>> getAllEstudianteMaterias() {
