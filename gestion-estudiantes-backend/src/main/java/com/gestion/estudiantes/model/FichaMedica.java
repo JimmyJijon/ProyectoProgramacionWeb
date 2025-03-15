@@ -29,5 +29,38 @@ public class FichaMedica {
     @OneToOne
     @JoinColumn(name = "estudiante_id", nullable = false)
     private Estudiante estudiante;
+
+    // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<AntecedentePatologico> getAntecedentesPatologicos() {
+        return antecedentesPatologicos;
+    }
+
+    public void setAntecedentesPatologicos(List<AntecedentePatologico> antecedentesPatologicos) {
+        this.antecedentesPatologicos = antecedentesPatologicos;
+    }
+
+    public List<HabitoPersonal> getHabitosPersonales() {
+        return habitosPersonales;
+    }
+
+    public void setHabitosPersonales(List<HabitoPersonal> habitosPersonales) {
+        this.habitosPersonales = habitosPersonales;
+    }
+
+    public Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
+    }
 }
 

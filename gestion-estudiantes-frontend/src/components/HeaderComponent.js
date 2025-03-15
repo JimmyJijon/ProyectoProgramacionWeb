@@ -9,6 +9,7 @@ export const HeaderComponent = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token'); // Eliminar el token
+    localStorage.removeItem('estudianteId'); // Eliminar el Id
     navigate('/'); // Redirigir a la página de inicio o login
   };
 

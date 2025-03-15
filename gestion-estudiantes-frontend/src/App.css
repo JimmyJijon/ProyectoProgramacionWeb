@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 
 .footer {
@@ -31,6 +32,12 @@ html, body {
   flex-direction: column;
 }
 
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .containerList{/*contenedor de la lista de estudiantes*/
   margin-top: 50px;
   flex: 1; /* Hace que el contenido principal crezca y empuje el footer hacia abajo */
@@ -58,12 +65,24 @@ html, body {
 }
 
 .homePageComponent {
-  margin-top: 50px;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   width: 100%; /* Asegura que ocupe todo el ancho */
-  position: relative; 
+  gap: 20px;  /* Espacio entre los elementos */
+  padding-top: 80px; /* Añade espacio para evitar que el contenido se superponga con el header */
   padding-bottom: 80px;
+  flex: 1; /* Permite que el componente crezca para llenar el espacio disponible */
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between; /* Distribuye el espacio entre los elementos */
+  align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+  width: 100%;
+  max-width: 1200px; /* Limita el ancho máximo para evitar que se extienda demasiado */
+  margin: 0 auto; /* Centra el contenedor */
+  padding: 0 20px; /* Añade un poco de padding para evitar que los elementos toquen los bordes */
 }
 
 .Linksalir{ /*img Salir*/
@@ -127,8 +146,8 @@ html, body {
 
 
 .boton-item {
-  width: 180px;
-  height: 180px;
+  flex: 1 1 calc(25% - 40px); /* Ajusta el tamaño base de los elementos para que ocupen el 25% del ancho menos el gap */
+  max-width: calc(25% - 40px); /* Asegura que los elementos no crezcan más allá del 25% del ancho menos el gap */
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
@@ -152,6 +171,16 @@ html, body {
   width: 50px; 
   height: 50px;
   margin-bottom: 10px;
+}
+
+.boton-item span {
+  font-family: 'Poppins', sans-serif; 
+  font-size: 14px; 
+  font-weight: 600; 
+  color: #900; 
+  line-height: 1.2;
+  text-align: center;
+  padding: 0 5px;
 }
 
 .boton-item span {
@@ -189,7 +218,7 @@ html, body {
   margin-top: auto; 
   margin-bottom: auto; 
 }
-s
+
 
 /* Título del formulario */
 .login-container h2 {
@@ -378,6 +407,28 @@ button[type="submit"]:hover {
   margin: 5px 0 0;
   font-size: 14px;
   color: #555;
+}
+
+.EstContainer {
+  background-color: rgb(236, 241, 239);
+  width: 400px;
+  min-height: 500px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .EstContainer {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 90%;
+    height: auto;
+    margin: 1rem auto;
+  }
 }
 
 

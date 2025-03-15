@@ -65,6 +65,14 @@ public class LoginController {
         Usuario usuario = usuarioService.getUsuarioByUsername(username)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        return ResponseEntity.ok(usuario);
+        // Create a response map including estudiante_id using the new getter
+        Map<String, Object> response = new HashMap<>();
+        response.put("id", usuario.getId());
+        response.put("username", usuario.getUsername());
+        response.put("password", usuario.getPassword());
+        response.put("rol", usuario.getRol());
+        response.put("estudiante_id", usuario.getEstudianteIdColumn());
+
+        return ResponseEntity.ok(response);
     }
 }

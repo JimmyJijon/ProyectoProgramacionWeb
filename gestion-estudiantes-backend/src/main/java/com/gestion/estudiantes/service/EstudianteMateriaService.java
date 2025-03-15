@@ -1,8 +1,8 @@
 package com.gestion.estudiantes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.gestion.estudiantes.model.Estudiante;
 import com.gestion.estudiantes.model.EstudianteMateria;
 import com.gestion.estudiantes.model.Materia;
@@ -17,7 +17,9 @@ import java.util.Optional;
 
 @Service
 public class EstudianteMateriaService {
-    private final EstudianteMateriaRepository estudianteMateriaRepository;
+
+    @Autowired
+    private EstudianteMateriaRepository estudianteMateriaRepository;
     private final EstudianteService estudianteService;
     private final MateriaService materiaService;
 
@@ -87,10 +89,25 @@ public class EstudianteMateriaService {
     nuevaInscripcion.setPeriodoAcademico(periodoAcademico);
     nuevaInscripcion.setFechaInicio(fechaInicio);
     nuevaInscripcion.setFechaFin(fechaFin);
-    nuevaInscripcion.setNota(nota);
+    nuevaInscripcion.setNota(Double.parseDouble(nota));
 
-    // Guardar en la base de datos
-    return estudianteMateriaRepository.save(nuevaInscripcion);
-}
-}
+        // Guardar en la base de datos
+        return estudianteMateriaRepository.save(nuevaInscripcion);
+    }
 
+    public List<EstudianteMateria> getAllEstudianteMaterias() {
+        return estudianteMateriaRepository.findAll();
+    }
+
+    public EstudianteMateria saveEstudianteMateria(EstudianteMateria estudianteMateria) {
+        return estudianteMateriaRepository.save(estudianteMateria);
+    }
+
+    public EstudianteMateria getEstudianteMateria(Long id) {
+        return estudianteMateriaRepository.findById(id).orElse(null);
+    }
+
+    public void deleteEstudianteMateria(Long id) {
+        estudianteMateriaRepository.deleteById(id);
+    }
+}

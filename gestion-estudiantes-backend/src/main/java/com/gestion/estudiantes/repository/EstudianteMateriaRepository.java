@@ -32,3 +32,4 @@ public interface EstudianteMateriaRepository extends JpaRepository<EstudianteMat
     @Query("UPDATE EstudianteMateria em SET em.estado = :estado WHERE em.estudiante.id = :estudianteId AND em.materia.id = :materiaId")
     void actualizarEstado(@Param("estado") EstadoMateria estado, @Param("estudianteId") Long estudianteId, @Param("materiaId") Long materiaId);
 }
+
